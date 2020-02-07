@@ -21,36 +21,36 @@ public class Modele {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MOD_ID")
-	int id;
+	private int id;
 	
 	@Column(name = "MOD_NOM", length = 100, nullable = false)
 	@NotBlank(message = "Le nom doit être renseigné")
 	@Size(max = 100, message = "Le nom du modèle ne doit pas dépasser 100 caractères")
-	String nom;
+	private String nom;
 	
 	@Column(name = "MOD_TPS_REAL")
-	int tempsrealisation;
+	private int tempsrealisation;
 	
 	@Column(name = "MOD_NIV")
-	Niveau niveau;
+	private Niveau niveau;
 	
 	@Column(name = "MOD_QTE_BOIS")
-	int qteBoisNecessaire;
+	private int qteBoisNecessaire;
 	
 	@Transient
-	double noteMoy;
+	private double noteMoy;
 	
 	@Column(name = "MOD_VISIBLE")
-	boolean visible;
+	private boolean visible;
 	
 	@Column(name = "MOD_LIEN_VIDEO")
-	String lienVideo;
+	private String lienVideo;
 	
 	@OneToMany(mappedBy = "modele")
-	List<Etape> etapes;
+	private List<Etape> etapes;
 	
 	@ManyToMany(mappedBy = "modeles")
-	List<Categorie> categories;
+	private List<Categorie> categories;
 	
 	public Modele() {
 		
@@ -96,7 +96,7 @@ public class Modele {
 		this.qteBoisNecessaire = qteBoisNecessaire;
 	}
 
-	public int getNoteMoy() {
+	public double getNoteMoy() {
 		return noteMoy;
 	}
 
