@@ -1,5 +1,11 @@
 package fr.lafactory.dao;
 
-public interface IDAOModele {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import fr.lafactory.model.Modele;
+
+public interface IDAOModele extends JpaRepository<Modele, Integer> {
+	
+	
 
 }
