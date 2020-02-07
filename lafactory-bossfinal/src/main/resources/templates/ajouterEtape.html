@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:if="${etape.id == 0 }">Ajouter une etape</title>
+<title th:if="${etape.id != 0 }">Modifier l'etape</title>
+</head>
+<body>
+
+<div class="container">
+		
+			<h1 th:if="${etape.id == 0 }">Ajouter une etape</h1>
+			<h1 th:if="${etape.id != 0 }">Modifier l'etape</h1>
+			
+			<div th:errors="${etape.ordre}" class="alert alert-danger" role="alert"></div>
+			
+
+		<form method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			<div class="form-group row">
+				<label class="col-2 col-form-label">Libelle : </label>
+				<div class="col-10">
+					<input type="text" name="libelle" class="form-control"
+						th:value="${produit?.libelle }">
+				</div>
+				<!-- <div class="form-groupe row"> -->
+				<label for="prix" class="col-2 col-form-label">Prix : </label>
+				<div class="col-10">
+						<input type="number" name="prix" class="form-control" th:value="${produit?.prix }">
+					</div>
+				<!-- </div> -->
+				<label class="col-2 col-form-label">Fournisseur : </label>
+				<div class="col-10">
+					<select name="fournisseur.id" class="form-control">
+					<option 
+						th:each="fournisseur : ${fournisseurs}"
+						th:value="${fournisseur.id}"
+						th:text="${fournisseur.societe}"
+						th:selected="${fournisseur.id == produit?.fournisseur?.id}"/>
+					</select>	
+				</div>
+				<label class="col-2 col-form-label">Image : </label>
+				<div class="col-10">
+					<input type="text" name="imageUrl" class="form-control"
+						th:value="${produit?.imageUrl }">
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary mb-2" th:if="${produit.id == 0 }">Ajouter</button>
+					<button type="submit" class="btn btn-primary mb-2" th:if="${produit.id != 0 }">Modifier</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
