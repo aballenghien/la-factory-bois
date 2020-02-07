@@ -26,21 +26,21 @@ public class Visiteur {
 	@Column(name = "UTI_ID")
 	protected int id;
 	
-	@Column(name = "UTI_NOM")
+	@Column(name = "UTI_NOM", length = 100)
 	protected String nom;
 	
-	@Column(name = "UTI_PRENOM")
+	@Column(name = "UTI_PRENOM", length = 100)
 	protected String prenom;
 	
-	@Column(name = "UTI_MAIL")
+	@Column(name = "UTI_MAIL", length = 100)
 	protected String mail;
 	
 	@OneToMany(mappedBy = "visiteur")
-	private List<Idee> idees;
+	protected List<Idee> idees;
 	
 	@Column(name ="UTI_ROLE",nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Role role = Role.visiteur;
+	protected Role role = Role.visiteur;
 
 	public int getId() {
 		return id;

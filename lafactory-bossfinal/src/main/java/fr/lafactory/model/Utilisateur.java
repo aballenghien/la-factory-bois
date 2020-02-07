@@ -9,11 +9,11 @@ import javax.validation.constraints.NotEmpty;
 @DiscriminatorValue("utilisateur")
 public class Utilisateur extends Visiteur {
 	
-	@Column (name = "VIS_USERNAME", nullable = false)
+	@Column (name = "VIS_USERNAME", nullable = false, length = 100)
 	@NotEmpty(message = "Veuillez entrer votre username")
 	private String username;
 	
-	@Column(name = "VIS_PASSWORD")
+	@Column(name = "VIS_PASSWORD", length = 500)
 	private String password;
 
 	public String getUsername() {
