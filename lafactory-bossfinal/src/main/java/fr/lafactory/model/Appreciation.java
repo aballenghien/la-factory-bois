@@ -8,12 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
@@ -49,11 +47,11 @@ public class Appreciation {
 		this.id = id;
 	}
 
-	public int getNote() {
+	public double getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
+	public void setNote(double note) {
 		this.note = note;
 	}
 
