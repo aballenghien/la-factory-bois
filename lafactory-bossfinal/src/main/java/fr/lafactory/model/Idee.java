@@ -25,7 +25,7 @@ public class Idee {
 	@Column(name = "IDE_ARCHIVE")
 	private Boolean archive = false;
 	@ManyToOne
-	@JoinColumn(name = "IDEE_VISITEUR")
+	@JoinColumn(name = "IDE_VISITEUR_ID")
 	private Visiteur visiteur;
 	
 	public int getId() {
