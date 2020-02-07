@@ -1,0 +1,1 @@
+insert into visiteur (uti_type,uti_id,uti_nom,uti_prenom,uti_role,vis_username) values (1,1,'simon','marcellin','ADMIN','maxou');
