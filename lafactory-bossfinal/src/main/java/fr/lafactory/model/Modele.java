@@ -2,6 +2,8 @@ package fr.lafactory.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,9 +31,10 @@ public class Modele {
 	private String nom;
 	
 	@Column(name = "MOD_TPS_REAL")
-	private int tempsrealisation;
+	private int tempsRealisation;
 	
 	@Column(name = "MOD_NIV")
+	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
 	
 	@Column(name = "MOD_QTE_BOIS")
@@ -72,12 +75,12 @@ public class Modele {
 		this.nom = nom;
 	}
 
-	public int getTempsrealisation() {
-		return tempsrealisation;
+	public int getTempsRealisation() {
+		return tempsRealisation;
 	}
 
-	public void setTempsrealisation(int tempsrealisation) {
-		this.tempsrealisation = tempsrealisation;
+	public void setTempsRealisation(int tempsRealisation) {
+		this.tempsRealisation = tempsRealisation;
 	}
 
 	public Niveau getNiveau() {
