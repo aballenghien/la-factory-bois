@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org">
+<!-- 	th:replace="~{layout.html :: layout(~{::title}, ~{::body})}"> -->
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<title>Liste des Utilisateurs</title>
+	
+	</head>
+	<body>
+			
+		<h2 class="display-4 text-center">Liste des Utilisateurs</h2>
+		
+		<table class="table table-striped mt-3 w-75 p-3 mx-auto">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Username</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="utilisateur : ${ utilisateurs }">
+					<td>[[${ utilisateur.nom }]]</td>
+					<td>[[${ utilisateur.prenom }]]</td>
+					<td>[[${ utilisateur.username }]]</td>
+					<td>
+						<div>
+							<a class ="button" type="submit" name ="editer" th:href="@{editerUtilisateur(id=${utilisateur.id})}">Editer</a>
+						</div>
+					</td>
+					<td>
+						<div>
+							<a class ="button" type="submit" name ="supprimer" th:href="@{supprimerUtilisateur(id=${utilisateur.id})}">Supprimer</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			
+		</table>
+		
+		
+		
+		
+	</body>
+</html>
