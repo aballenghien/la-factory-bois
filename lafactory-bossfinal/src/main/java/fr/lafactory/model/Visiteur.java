@@ -40,7 +40,7 @@ public class Visiteur {
 	
 	@Column(name ="UTI_ROLE",nullable = false)
 	@Enumerated(EnumType.STRING)
-	protected Role role = Role.visiteur;
+	protected Role role = Role.VISITEUR;
 
 	public int getId() {
 		return id;
