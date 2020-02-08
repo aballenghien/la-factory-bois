@@ -43,7 +43,7 @@ public class VisiteurController {
 			BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
-			return "redirect:/listeVisiteur";
+			return "formVisiteur";
 		}
 		
 		daoVisiteur.save(utilisateur);
@@ -71,7 +71,7 @@ public class VisiteurController {
 			@ModelAttribute Visiteur visiteur, BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
-			return "listeVisiteur";
+			return "formVisiteur";
 		}
 		
 		daoVisiteur.save(visiteur);

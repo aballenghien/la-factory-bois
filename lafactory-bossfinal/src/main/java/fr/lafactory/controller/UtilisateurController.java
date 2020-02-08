@@ -31,7 +31,7 @@ public class UtilisateurController {
 	public String ajouterProduit(Model model) {
 		model.addAttribute("utilisateur",  new Utilisateur());
 		
-			return "formUtilisateur";
+		return "formUtilisateur";
 	}
 	
 	@PostMapping("/ajouterUtilisateur")
@@ -41,7 +41,7 @@ public class UtilisateurController {
 			BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
-			return "redirect:/listeUtilisateur";
+			return "formUtilisateur";
 		}
 		
 		daoUtilisateur.save(utilisateur);
@@ -69,7 +69,7 @@ public class UtilisateurController {
 			@ModelAttribute Utilisateur utilisateur, BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
-			return "listeUtilisateur";
+			return "formUtilisateur";
 		}
 		
 		daoUtilisateur.save(utilisateur);
