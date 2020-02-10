@@ -66,7 +66,12 @@ public class CategorieController {
 		Categorie c = daoCategorie.findById(id).get();
 	
 		model.addAttribute("categorie", c);
+		
+		if (daoCategorie.findById(id).orElse(null).getCatMere() != null) {
 		model.addAttribute("catMereId", daoCategorie.findById(id).get().getCatMere().getId());
+		}
+		else 
+		{model.addAttribute("catMereId", 0);}
 		return "addCategorie";
 	}
 	
