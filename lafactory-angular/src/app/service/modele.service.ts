@@ -15,7 +15,7 @@ export class ModeleService {
 
   public findAll(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + "modele")
+      .get<Array<Modele>>(this.srv.url + 'modele')
       .subscribe(resp =>
         this.modeles = resp);
     return this.modeles;
@@ -23,7 +23,7 @@ export class ModeleService {
 
   public findByCategorie(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + "modele")
+      .get<Array<Modele>>(this.srv.url + 'modele')
       .subscribe(resp =>
         this.modeles = resp);
         return this.modeles;
@@ -31,7 +31,7 @@ export class ModeleService {
 
   public findByDifficulte(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + "modele")
+      .get<Array<Modele>>(this.srv.url + 'modele')
       .subscribe(resp =>
         this.modeles = resp);
         return this.modeles;
