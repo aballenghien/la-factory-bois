@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:if= "${categorie.id == 0}">Ajout d'une categorie</title>
+  	
+  	
+  <title th:if= "${categorie.id != 0}">Modification d'une categorie</title>
+</head>
+<body>
+
+<form method="POST">
+	
+  <div >
+    <label>Nom de la categorie</label>
+    <input type="text" name="nom" th:value="${categorie?.nom}" required>
+	
+  </div>
+
+   
+    <div>
+    	<label>Categorie mere</label>
+    	<select name="catMere">
+      		<option
+      			th:each="categorie : ${categories}"
+     			th:value="${categorie.id}"
+      			th:text="${categorie.nom}"
+      			th:selected="${categorie.id == catMereId}">
+    </select>
+    
+    
+   </div>
+   
+
+  <button th:if= "${categorie.id == 0}" type="submit" class="btn btn-primary">Ajouter</button>
+  	
+  	
+  <button th:if= "${categorie.id != 0}" type="submit" class="btn btn-primary">Modifier</button>
+  	
+</form>
+
+</body>
+</html>
