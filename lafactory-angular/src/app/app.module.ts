@@ -7,10 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdeesComponent } from './idees/idees.component';
+import { ModeleComponent } from './modele/modele.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idees', component: IdeesComponent },
+  {path: 'modele/:id', component : ModeleComponent},
+  {path: 'modele/:id/:niveau', component : ModeleComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -18,7 +21,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    IdeesComponent
+    IdeesComponent,
+    ModeleComponent
   ],
   imports: [
     BrowserModule,
