@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -29,31 +28,25 @@ import fr.lafactory.views.Views;
 @Table(name = "categorie")
 public class Categorie {
 	
-	//parametre
-	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CAT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
-	@JsonView(Views.Categorie.class)
 	@Column(name="CAT_NOM", nullable = false, length = 100)
 	@NotEmpty
+	@JsonView(Views.ModeleWithCategories.class)
 	private String nom;
-	@JsonView(Views.Categorie.class)
 	@ManyToOne
 	@JoinColumn(name = "CATMERE_ID")
+	@JsonView(Views.ModeleWithCategories.class)
 	private Categorie catMere;
 	@JsonView(Views.CategorieFetchingCategoriesFilles.class)
 	@OneToMany(mappedBy = "catMere", cascade = CascadeType.REMOVE)
 	private List<Categorie> catFilles;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "modele_categorie",
-			joinColumns =  @JoinColumn(name = "MODCAT_CAT_ID", referencedColumnName = "CAT_ID"),
-			inverseJoinColumns = @JoinColumn(name = "MODCAT_MOD_ID", referencedColumnName = "MOD_ID")
-			)
+	@ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
 	private List<Modele> modeles;
 	
 	

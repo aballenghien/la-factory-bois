@@ -14,8 +14,11 @@ import fr.lafactory.views.Views;
 
 public interface IDAOModele extends JpaRepository<Modele, Integer> {
 	
-	@Query("Select m from Modele m left join fetch m.etapes e where m.id=?1")
+	@Query("Select m from Modele m left join fetch m.categories c where m.id=?1")
+	@JsonView(Views.ModeleWithCategories.class)
+	public Optional<Modele> findByIdWithCategories(int id);
 	@JsonView(Views.ModeleWithEtapes.class)
+	@Query("Select m from Modele m left join fetch m.etapes e where m.id=?1")
 	public Modele findByIdWithEtapes(int id);
 	
 	@Query("Select m from Modele m left join m.categories c where c.id=?1")

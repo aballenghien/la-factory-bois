@@ -10,10 +10,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -38,12 +41,14 @@ public class Modele {
 	private String nom;
 	
 	@Column(name = "MOD_DESC", length = 1000, nullable = false)
-	@Size(max = 1000, message = "Le nom du modèle ne doit pas dépasser 1000 caractères")
+	@Size(max = 1000, message = "La description du modèle ne doit pas dépasser 1000 caractères")
+	@NotBlank(message = "La description est obligatoire")
 	@JsonView({Views.Modele.class, Views.ModeleWithCategories.class, Views.ModeleWithEtapes.class})
 	private String description;
 	
 	@Column(name = "MOD_IMAGE", length = 1000, nullable = false)
 	@Size(max = 1000, message = "L'url de l'image ne doit pas dépasser 1000 caraactères")
+	@NotBlank(message = "Une image doit accompagner le modèle")
 	@JsonView({Views.Modele.class, Views.ModeleWithCategories.class, Views.ModeleWithEtapes.class})
 	private String urlImage;
 	
@@ -75,7 +80,14 @@ public class Modele {
 	@JsonView({ Views.ModeleWithEtapes.class, Views.ModeleWithEtapesAndCategories.class})
 	private List<Etape> etapes;
 	
-	@ManyToMany(mappedBy = "modeles", cascade = CascadeType.PERSIST)
+
+	@ManyToMany
+	@JoinTable(
+			name = "modele_categorie",
+			uniqueConstraints = @UniqueConstraint(columnNames = {"MODCAT_MOD_ID","MODCAT_CAT_ID"} ),
+			joinColumns =  @JoinColumn(name = "MODCAT_MOD_ID", referencedColumnName = "MOD_ID"),
+			inverseJoinColumns = @JoinColumn(name = "MODCAT_CAT_ID", referencedColumnName = "CAT_ID")
+			)
 	@JsonView({Views.ModeleWithCategories.class, Views.ModeleWithEtapesAndCategories.class})
 	private List<Categorie> categories;
 	
