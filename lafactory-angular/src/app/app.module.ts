@@ -7,10 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdeesComponent } from './idees/idees.component';
+import { DernierePageEtapeComponent } from './derniere-page-etape/derniere-page-etape.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idees', component: IdeesComponent },
+  { path: 'derniere-page-tuto/:id', component: DernierePageEtapeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
@@ -18,7 +20,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    IdeesComponent
+    IdeesComponent,
+    DernierePageEtapeComponent
   ],
   imports: [
     BrowserModule,

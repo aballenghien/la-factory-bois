@@ -36,4 +36,11 @@ export class ModeleService {
         this.modeles = resp);
         return this.modeles;
   }
+
+  public async findById(id: number): Promise<Modele> {
+    let modele: Modele =  await this.http
+    .get<Array<Modele>>(this.srv.url+"modele/"+id)
+    .toPromise().then();
+    return modele;
+  }
 }
