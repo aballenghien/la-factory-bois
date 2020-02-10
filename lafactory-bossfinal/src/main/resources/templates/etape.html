@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
 <head>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -18,14 +18,13 @@
 				<th>Titre</th>
 				<th>Texte</th>
 				<th>Image</th>
-				<tr></tr>
+				<th></th>
 			</thead>
 			<tr th:each="etape : ${ etapes }">
 				<td th:text="${ etape.ordre }"></td>
 				<td th:text="${ etape.titre }"></td>
 				<td th:text="${ etape.texte }"></td>
-				<td th:text="${ etape.image }"></td>
-				<td><!-- <img th:if="${produit.imageUrl!=''}" th:src="${produit?.imageUrl}" width="100px"> --></td>
+				<td><img th:if="${etape.image!=''}" th:src="${etape?.image}" width="100px"></td>
 				<td><a class="btn btn-warning" th:href="@{ modifierEtape(id=${ etape.id })}">Editer</a>
 				<a class="btn btn-danger" th:href="@{ supprimerEtape(id=${ etape.id })}">Supprimer</a></td>
 			</tr>

@@ -10,5 +10,5 @@ import fr.lafactory.model.Visiteur;
 public interface IDAOIdee extends JpaRepository<Idee,Integer> {
 
 	public Idee findByVisiteur(Visiteur visiteur);
-	public List<Idee> findAllWithArchiveIsFalse();
+//	public List<Idee> findAllWithArchiveIsFalse();
 }

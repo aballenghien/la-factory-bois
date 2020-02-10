@@ -41,7 +41,7 @@ public class EtapeController {
 	}
 
 	@PostMapping("/ajouterEtape")
-	public String add(@Valid @ModelAttribute Etape etape, BindingResult result, @ModelAttribute Modele modele) {
+	public String add(@Valid @ModelAttribute Etape etape, BindingResult result) {
 		
 	if(result.hasErrors()) {
 		return "ajouterEtape";

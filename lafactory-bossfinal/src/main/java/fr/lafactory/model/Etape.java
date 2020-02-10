@@ -8,35 +8,49 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.lafactory.views.Views;
+
 
 @Entity
 @Table(name="etape")
 public class Etape {
 
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ETA_ID")
 	private int id;
 	
+	@JsonView(Views.Etape.class)
 	@Column(name="ETA_ORDRE", nullable = false)
-	@NotEmpty
+	@NotNull
 	private int ordre;
 	
+	@JsonView(Views.Etape.class)
 	@Column(name="ETA_TITRE")
 	private String titre;
 	
+	@JsonView(Views.Etape.class)
 	@Column(name="ETA_TEXTE")
 	private String texte;
 	
+	@JsonView(Views.Etape.class)
 	@Column(name="ETA_IMAGE")
 	private String image;
 	
+	@JsonView(Views.Etape.class)
 	@ManyToOne
 	@JoinColumn(name="ETA_MOD_ID", nullable = false)
-	@NotEmpty
+	@NotNull
 	private Modele modele;
 
+	
+	
+	
 	public int getId() {
 		return id;
 	}
