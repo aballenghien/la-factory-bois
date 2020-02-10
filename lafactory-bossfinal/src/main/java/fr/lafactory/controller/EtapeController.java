@@ -27,28 +27,31 @@ public class EtapeController {
 	@Autowired
 	private IDAOModele daoModele;
 	
-	@GetMapping("/etape")
-	public String findAll(Model model) {
-		model.addAttribute("etapes", daoEtape.findAll());
+	@GetMapping("/etape/modele")
+	public String findAll(Model model, @RequestParam int idModele) {
+		model.addAttribute("etapes", daoEtape.findEtapesByIdModele(idModele).orElse(null));
+		model.addAttribute("modele",daoModele.findById(idModele).orElse(null));
 		return "etape";
 	}
 
 	
 	@GetMapping("/ajouterEtape")
-	public String add(Model model) {
-		model.addAttribute("etape", new Etape());
+	public String add(Model model, @RequestParam int idModele) {
+		Etape etape = new Etape();
+		etape.setModele(daoModele.findById(idModele).orElse(null));
+		model.addAttribute("etape", etape);
 		return "ajouterEtape";
 	}
 
 	@PostMapping("/ajouterEtape")
-	public String add(@Valid @ModelAttribute Etape etape, BindingResult result) {
+	public String add(@Valid @ModelAttribute Etape etape, BindingResult result, @RequestParam int idModele) {
 		
 	if(result.hasErrors()) {
 		return "ajouterEtape";
 	}
 	
 	daoEtape.save(etape);
-	return "redirect:/etape";
+	return "redirect:/etape/modele?idModele="+etape.getModele().getId();
 	}
 	
 	
@@ -56,9 +59,9 @@ public class EtapeController {
 	
 	@GetMapping("/supprimerEtape")
 	public String delete(@RequestParam int id) {
-		
+		Etape etape = daoEtape.findById(id).orElse(null);
 		daoEtape.deleteById(id);
-		return "redirect:/etape";
+		return "redirect:/etape/modele?idModele="+etape.getModele().getId();
 	}
 	
 
@@ -78,7 +81,7 @@ public class EtapeController {
 			return "ajouterEtape";
 		}
 		daoEtape.save(etape);
-		return "redirect:/etape";
+		return "redirect:/etape/modele?idModele="+etape.getModele().getId();
 		
 	}
 	
