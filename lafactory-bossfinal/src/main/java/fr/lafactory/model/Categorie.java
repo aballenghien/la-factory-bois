@@ -11,10 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.lafactory.api.Views;
 
 @Entity
 @Table(name = "categorie")
@@ -25,15 +28,18 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CAT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	
 	@Column(name="CAT_NOM", nullable = false, length = 100)
 	@NotEmpty
+	@JsonView(Views.ModeleWithCategories.class)
 	private String nom;
 	
 	@ManyToOne
 	@JoinColumn(name = "CATMERE_ID")
+	@JsonView(Views.ModeleWithCategories.class)
 	private Categorie catMere;
 	
 	@OneToMany(mappedBy = "catMere")

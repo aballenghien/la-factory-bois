@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<script type="text/javascript" th:src="@{modele.js}"></script>
 	<div class="container-fluid">
 		<form method="POST" name="formModele">
 			<h1 th:if="${modele.id == 0 }">Ajouter un modele</h1>
@@ -21,34 +22,39 @@
 			<div>
 				<label for="niveau">Niveau : </label>
 				<select name="niveau" id="niveau">
+					<option th:each="niveau : ${ lstNiveaux }"
+							th:value="${ niveau }" th:text="${niveau}" 
+							th:selected="${ niveau == modele?.niveau }" />
 				</select>
-				<input type="text" name="nom" id="nom" class="form-control" th:value="${ modele?.nom }" />
 			</div>
-			<div class="form-group">
-				<label for="nom">Quantité de bois nécessaire : </label> <input
-					type="text" name="nom" id="nom" class="form-control"
-					th:value="${ modele?.nom }" />
+			<div>
+				<label for="qteBoisNecessaire">Quantité de bois nécessaire : </label> 
+				<input type="number" name="qteBoisNecessaire" id="qteBoisNecessaire" th:value="${ modele?.qteBoisNecessaire }" />
 			</div>
-			<div class="form-group">
-				<label for="nom">Visible pour le visiteur : </label> <input type="text"
-					name="nom" id="nom" class="form-control"
-					th:value="${ modele?.nom }" />
+			<div>
+				<label for="visible">Visible pour le visiteur : </label> 
+				<input type="checkbox" name="visible" id="visible" th:checked="${modele?.visible}" />
 			</div>
-			<div class="form-group">
-				<label for="fournisseur.id">Categorie : </label> <select
-					id="fournisseur.id" name="fournisseur.id" class="form-control">
-					<option value=0>--Selectionner un fournisseur--</option>
-					<option th:each="fournisseur : ${ lstFournisseurs }"
-						th:value="${ fournisseur.id }" th:text="${ fournisseur.societe}"
-						th:selected="${ fournisseur.id == modele?.fournisseur?.id }" />
+			<div>
+				<label for="lienVideo">Lien de la vidéo (facultatif) : </label> 
+				<input type="text" name="lienVideo" id="lienVideo" th:value="${ modele?.lienVideo }" />
+			</div>
+			<div>
+				<label for="categorie">Categorie : </label> 
+				<select id="categorie" name="categorie">
+					<option value=0>--Selectionner une catégorie--</option>
+					<option th:each="categorie : ${ lstCategories }"
+						th:value="${ categorie.id }" th:text="${ categorie.nom }"></option>
 				</select>
+				<div id="addCategorie" onClick="ajouterCategorie()">Ajouter Catégorie</div>				
+				<textarea name="listeDesCategories" id="listeDesCategories" th:text="listeDesCategories"></textarea>
 			</div>
 			<button th:if="${ modele.id == 0 }" type="submit"
 				class="btn btn-outline-primary">Ajouter</button>
 			<button th:if="${ modele.id != 0 }" type="submit"
 				class="btn btn-outline-primary">Modifier</button>
-			<input type="hidden" th:name="${_csrf.parameterName}"
-				th:value="${_csrf.token}" />
+			<!-- <input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" /> -->
 		</form>
 	</div>
 </body>
