@@ -15,7 +15,7 @@ export class CategorieService {
 
   public findAll(): Array<Categorie> {
     this.http
-      .get<Array<Categorie>>(this.srv.url + "categorie")
+      .get<Array<Categorie>>(this.srv.url + 'categorie')
       .subscribe(resp =>
         this.categories = resp);
     return this.categories;
@@ -23,7 +23,15 @@ export class CategorieService {
 
   public findCategoriesNiv1(): Array<Categorie> {
     this.http
-      .get<Array<Categorie>>(this.srv.url + "categorie/0")
+      .get<Array<Categorie>>(this.srv.url + 'categorie/1')
+      .subscribe(resp =>
+        this.categories = resp);
+    return this.categories;
+  }
+
+  public findByCategorie(categorie: Categorie): Array<Categorie> {
+    this.http
+      .get<Array<Categorie>>(this.srv.url + 'categorie/' + categorie.id)
       .subscribe(resp =>
         this.categories = resp);
     return this.categories;
