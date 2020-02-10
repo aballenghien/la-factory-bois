@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.lafactory.dao.IDAOEtape;
+import fr.lafactory.dao.IDAOModele;
 import fr.lafactory.model.Etape;
+import fr.lafactory.model.Modele;
 
 @Controller
 public class EtapeController {
 
 	@Autowired
 	private IDAOEtape daoEtape;
+
 
 	@GetMapping("/etape")
 	public String findAll(Model model) {
@@ -33,12 +36,13 @@ public class EtapeController {
 		return "ajouterEtape";
 	}
 
-	@PostMapping("/ajouterProduit")
-	public String add(@Valid @ModelAttribute Etape etape, BindingResult result, Model model) {
-	
+	@PostMapping("/ajouterEtape")
+	public String add(@Valid @ModelAttribute Etape etape, BindingResult result, @ModelAttribute Modele modele) {
+		
 	if(result.hasErrors()) {
 		return "ajouterEtape";
 	}
+	
 	daoEtape.save(etape);
 	return "redirect:/etape";
 	}
@@ -55,7 +59,7 @@ public class EtapeController {
 	
 
 	
-	@GetMapping("/modifierProduit")
+	@GetMapping("/modifierEtape")
 	public String edit(Model model, @RequestParam int id) {
 		model.addAttribute("etapes", daoEtape.findAll());
 		Etape e = daoEtape.findById(id).orElse(null);
