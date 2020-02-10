@@ -7,6 +7,8 @@ public class Views {
 	}
 	public static class Utilisateur extends Common {
 	}
+	public static class Visiteur extends Common {
+	}
 	public static class Etape extends Common {
 	}
 	public static class Categorie extends Common {

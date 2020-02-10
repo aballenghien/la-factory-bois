@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.lafactory.dao.IDAOVisiteur;
 import fr.lafactory.model.Visiteur;
+import fr.lafactory.views.Views;
 
 @RestController
 @RequestMapping("/api/visiteur")
@@ -26,13 +29,13 @@ public class VisiteurRestController {
 	IDAOVisiteur daoVisiteur;
 	
 	@GetMapping
-//	@JsonView(Views.Visiteur.class )
+	@JsonView(Views.Visiteur.class )
 	public List<Visiteur> findAll() {
 		 return this.daoVisiteur.findAll();
 	}
 	
 	@PostMapping
-//	@JsonView(Views.Visiteur.class )
+	@JsonView(Views.Visiteur.class )
 	public Visiteur save(@RequestBody Visiteur visiteur) {
 		daoVisiteur.save(visiteur);
 		
@@ -41,17 +44,16 @@ public class VisiteurRestController {
 	}
 	
 	@GetMapping("/{id}")
-//	@JsonView(Views.Visiteur.class )
+	@JsonView(Views.Visiteur.class )
 	@Transactional
 	public Visiteur findById(@PathVariable int id) {
-//	 return this.daoFournisseur.findByIdFetchingProduits(id);
 		
 		Visiteur v = daoVisiteur.findById(id).get();
 		return v;
 	}
 	
 	@PutMapping("/{id}")
-//	@JsonView(Views.Visiteur.class )
+	@JsonView(Views.Visiteur.class )
 	public Visiteur save (@PathVariable int id, @RequestBody Visiteur visiteur) {
 		this.daoVisiteur.save(visiteur);
 		return visiteur;

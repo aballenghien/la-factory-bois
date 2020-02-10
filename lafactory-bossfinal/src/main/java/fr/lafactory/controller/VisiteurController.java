@@ -45,8 +45,11 @@ public class VisiteurController {
 			BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
+			
 			return "formVisiteur";
 		}
+		
+		System.out.println(visiteur.getPrenom());
 		daoVisiteur.save(visiteur);
 		return "redirect:/listeVisiteur";
 	}
