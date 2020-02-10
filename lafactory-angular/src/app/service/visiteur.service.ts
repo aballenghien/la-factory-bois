@@ -12,6 +12,25 @@ export class VisiteurService {
 
   public visiteurs: Array<Visiteur> = null;
 
+  public findAll(): Array<Visiteur> {
+    this.httpClient
+    .get<Array<Visiteur>>(`${ this.srvAppConfig.url + 'visiteur' }`)
+    .subscribe(resp =>
+    this.visiteurs = resp
+    );
+      return this.visiteurs;
+  }
+  private visiteur : Visiteur = new Visiteur();
+  public lastVisiteur : Visiteur;
+
+  public findLast (): Visiteur{
+    this.httpClient
+        .get<Visiteur>( this.srvAppConfig.url + 'visiteur/last')
+        .subscribe(resp => this.lastVisiteur = resp);
+
+        return this.lastVisiteur;
+  }
+
   public save (visiteur : Visiteur):void{
     console.log(visiteur);
       this.httpClient

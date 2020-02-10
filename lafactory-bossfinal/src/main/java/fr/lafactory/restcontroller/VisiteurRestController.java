@@ -52,6 +52,15 @@ public class VisiteurRestController {
 		return v;
 	}
 	
+	@GetMapping("/last")
+	@JsonView(Views.Visiteur.class )
+	@Transactional
+	public Visiteur findLast() {
+		
+		Visiteur v = daoVisiteur.findAll().get((int) daoVisiteur.count());
+		return v;
+	}
+	
 	@PutMapping("/{id}")
 	@JsonView(Views.Visiteur.class )
 	public Visiteur save (@PathVariable int id, @RequestBody Visiteur visiteur) {
