@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.lafactory.views.Views;
+
 @Entity
 @Table(name="etape")
 public class Etape {
@@ -17,19 +21,24 @@ public class Etape {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ETA_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="ETA_ORDRE", nullable = false)
 	@NotEmpty
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private int ordre;
 	
 	@Column(name="ETA_TITRE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String titre;
 	
 	@Column(name="ETA_TEXTE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String texte;
 	
 	@Column(name="ETA_IMAGE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String image;
 	
 	@ManyToOne

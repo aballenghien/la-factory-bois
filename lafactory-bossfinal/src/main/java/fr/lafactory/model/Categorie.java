@@ -18,32 +18,37 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fr.lafactory.api.Views;
+import fr.lafactory.views.Views;
+
+
+
+
+
 
 @Entity
 @Table(name = "categorie")
 public class Categorie {
 	
 	//parametre
-	
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CAT_ID")
 	@JsonView(Views.Common.class)
 	private int id;
 	
-	
+	@JsonView(Views.Categorie.class)
 	@Column(name="CAT_NOM", nullable = false, length = 100)
 	@NotEmpty
 	@JsonView(Views.ModeleWithCategories.class)
 	private String nom;
-	
+	@JsonView(Views.Categorie.class)
 	@ManyToOne
 	@JoinColumn(name = "CATMERE_ID")
 	@JsonView(Views.ModeleWithCategories.class)
 	private Categorie catMere;
-	
-	@OneToMany(mappedBy = "catMere")
+	@JsonView(Views.CategorieFetchingCategoriesFilles.class)
+	@OneToMany(mappedBy = "catMere", cascade = CascadeType.REMOVE)
 	private List<Categorie> catFilles;
 	
 	@ManyToMany(cascade = CascadeType.PERSIST)
