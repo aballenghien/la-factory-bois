@@ -1,5 +1,7 @@
 package fr.lafactory.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class VisiteurController {
 	@Autowired
 	private IDAOVisiteur daoVisiteur;
 	
-	@GetMapping("/visiteur")
+	@GetMapping("/listeVisiteur")
 	public String findAll(Model model) {
 		model.addAttribute("visiteurs", daoVisiteur.findAll());
 		return "listeVisiteur";
@@ -39,14 +41,13 @@ public class VisiteurController {
 	@PostMapping("/ajouterVisiteur")
 	public String ajouterUtilisateur(
 			@Valid
-			@ModelAttribute Utilisateur utilisateur,
+			@ModelAttribute Visiteur visiteur,
 			BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
 			return "formVisiteur";
 		}
-		
-		daoVisiteur.save(utilisateur);
+		daoVisiteur.save(visiteur);
 		return "redirect:/listeVisiteur";
 	}
 	
@@ -79,5 +80,8 @@ public class VisiteurController {
 	}
 	
 	
-
+	@ModelAttribute("visiteurs")
+	public List<Visiteur> getVisiteurs(){
+		return daoVisiteur.findAll();
+	}
 }

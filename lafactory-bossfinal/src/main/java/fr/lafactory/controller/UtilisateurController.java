@@ -1,5 +1,8 @@
 package fr.lafactory.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.lafactory.dao.IDAOUtilisateur;
+import fr.lafactory.model.Role;
 import fr.lafactory.model.Utilisateur;
 
 @Controller
@@ -20,7 +24,7 @@ public class UtilisateurController {
 	@Autowired
 	private IDAOUtilisateur daoUtilisateur;
 	
-	@GetMapping("/utilisateur")
+	@GetMapping("/listeUtilisateur")
 	public String findAll(Model model) {
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
 		return "listeUtilisateur";
@@ -41,10 +45,21 @@ public class UtilisateurController {
 			BindingResult result, Model model) {
 		
 		if(result.hasErrors ()) {
+			System.out.println(utilisateur.getPrenom());
+			System.out.println(utilisateur.getNom());
+			System.out.println(utilisateur.getPassword());
+			System.out.println(utilisateur.getUsername());
+			System.out.println(result.getErrorCount());
+			System.out.println(result);
+			
 			return "formUtilisateur";
 		}
 		
+//		utilisateur.setRole(role);
+		
+		
 		daoUtilisateur.save(utilisateur);
+		
 		return "redirect:/listeUtilisateur";
 	}
 	
@@ -76,6 +91,18 @@ public class UtilisateurController {
 		return "redirect:/listeUtilisateur";
 	}
 	
+	@ModelAttribute("utilisateurs")
+	public List<Utilisateur> getUtilisateurs(){
+		return daoUtilisateur.findAll();
+	}
 	
+	@ModelAttribute("roles")
+	public List<Role> getRoles(){
+		List<Role> roles = new ArrayList<Role>();
+		
+		roles.add(Role.ADMINISTRATEUR);
+		roles.add(Role.TECHNICIEN);
+		return roles;
+	}
 
 }

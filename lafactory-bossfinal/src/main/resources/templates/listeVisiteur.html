@@ -14,13 +14,14 @@
 		</div>
 		
 		<div class="container w-75 p-3 mx-auto">
-			<a href="formUtilisateur">Ajouter un nouveau visiteur</a>
+			<a href="ajouterVisiteur">Ajouter un nouveau visiteur</a>
 			<table class="table table-striped mt-3 w-75 p-3 mx-auto">
 				<thead>
 					<tr>
 						<th>Nom</th>
 						<th>Prenom</th>
 						<th>Mail</th>
+						<th>Role</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -29,6 +30,7 @@
 						<td>[[${ visiteur.nom }]]</td>
 						<td>[[${ visiteur.prenom }]]</td>
 						<td>[[${ visiteur.mail }]]</td>
+						<td>[[${ visiteur.role }]]</td>
 						<td>
 							<div>
 								<a class ="btn btn-warning" type="submit" name="editer" th:href="@{editerVisiteur(id=${visiteur.id})}">Editer</a>
