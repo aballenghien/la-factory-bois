@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Idee</title>
 	</head>
+	
 	<body>
-		<table class="table table-striped table-dark">
+		<form method="POST" class="text-center" >
+			<!-- <div>
+			    <label for="pseudo">Nom :</label>
+			    <input type="text"  name="nom"/>
+			</div>
+			<div>
+			    <label for="pseudo">Prenom :</label>
+			    <input type="text"  name="prenom"/>
+			</div> -->
+			<div class="form-group">
+			    <label for="password">Idee : </label>
+			    <input type="text" name="description" required/>
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-success">Ajouter</button>
+			</div>
+		</form>
+		<!-- <div class="text-center">
+			<button id='bouton' class="btn btn-danger" th:if="${affiche == false}">Afficher la liste des idees archivees</button>
+			<button class="btn btn-danger" th:if="${affiche}">Masquer les idees archivees</button>
+		</div> -->
+		<table class="table table-striped table-dark" th:if="${affiche == false}">
 			<thead>
 				<tr>
-					<th></th>
 					<th scope="col">Visiteur</th>
+					<th scope="col">Mail</th>
 					<th scope="col">Description</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="produit : ${ produits}" >
-					<td>[[${ produit.libelle }]]</td>
-					<td th:text="${ produit.prix }"></td>
-					<td>[[${produit.fournisseur.societe}]]</td>
-					<td sec:authorize="hasRole('ADMIN')">
-						<a class="btn btn-warning" th:href="@{modifierProduit(id=${produit.id})}">Modifier</a>
-						<a class="btn btn-danger" th:href="@{supprimerProduit(id=${produit.id})}">Supprimer</a>
-					</td>
+				<tr th:each="idee : ${ idees}" >
+					<td>[[${ idee.visiteur.nom }]] [[${ idee.visiteur.prenom }]]</td>
+					<td th:if="${idee.mail != null}" th:text="${ idee.mail }"></td>
+					<td th:text="${ idee.description }"></td>
+					<!-- <td sec:authorize="hasRole('ADMIN')"> -->
+					<!-- <td>
+					 	<a class="btn btn-warning" th:href="@{archiveIdee(id=${idee.id})}">Archiver</a>
+					 </td> -->
+					 
 				
 				</tr>
 			</tbody>
 		</table>
+		
 	</body>
 </html>
