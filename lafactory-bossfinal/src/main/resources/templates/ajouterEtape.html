@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title th:if="${etape.id == 0 }">Ajouter une etape</title>
+<title th:if="${etape.id != 0 }">Modifier l'etape</title>
+</head>
+<body>
+
+<div class="container">
+		
+			<h1 th:if="${etape.id == 0 }">Ajouter une etape</h1>
+			<h1 th:if="${etape.id != 0 }">Modifier l'etape</h1>
+			
+			<div th:errors="${etape.ordre}" class="alert alert-danger" role="alert"></div>
+			
+
+		<form method="post">
+		<input type="hidden" />
+			<div class="form-group row">
+				<label class="col-2 col-form-label">Ordre : </label>
+				<div class="col-10">
+					<input type="text" name="ordre" class="form-control"
+						th:value="${etape?.ordre }">
+				</div>
+				<!-- <div class="form-groupe row"> -->
+				<label for="prix" class="col-2 col-form-label">titre : </label>
+				<div class="col-10">
+						<input type="text" name="titre" class="form-control" th:value="${etape?.titre }">
+					</div>
+				<!-- </div> -->
+				<label class="col-2 col-form-label">texte : </label>
+				<div class="col-10">
+					<input type="text" name="texte" class="form-control"
+						th:value="${etape?.texte }">	
+				</div>
+				<label class="col-2 col-form-label">Image : </label>
+				<div class="col-10">
+					<input type="text" name="image" class="form-control"
+						th:value="${etape?.image }">
+				</div>
+				<label class="col-2 col-form-label">Modele : </label>
+				<div class="col-10">
+					<select name="modele.id" class="form-control">
+					<option 
+						th:each="modele : ${modeles}"
+						th:value="${modele.id}"
+						th:text="${modele.nom}"
+						th:selected="${modele.id == etape?.modele?.id}"/>
+					</select>	
+				</div>
+				<div>
+					<button type="submit" class="btn btn-success" th:if="${etape.id == 0 }">Ajouter</button>
+					<button type="submit" class="btn btn-warning" th:if="${etape.id != 0 }">Modifier</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
