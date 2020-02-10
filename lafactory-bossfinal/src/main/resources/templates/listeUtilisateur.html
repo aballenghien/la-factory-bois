@@ -9,23 +9,23 @@
 	</head>
 	<body>
 		
-		<div class="container">
-			<h2 class="display-4 text-center">Liste des Utilisateurs</h2>
+		<div>
+			<h1>Liste des Utilisateurs</h1>
 		</div>
 		
-		<div class="container w-75 p-3 mx-auto">
+		<div>
 			<div>
-				<a href="ajouterUtilisateur">Ajouter un nouvel utilisateur</a>
+				<a th:href="@{ajouterUtilisateur}" class="btn btn-success">Ajouter un nouvel utilisateur</a>
 			</div>
 			
-			<table class="table table-striped mt-3 w-75 p-3 mx-auto">
-				<thead>
+			<table class="table table-striped">
+				<thead class="thead-dark">
 					<tr>
-						<th>Nom</th>
-						<th>Prenom</th>
-						<th>Username</th>
-						<th>Role</th>
-						<th></th>
+						<th scope="col">Nom</th>
+						<th  scope="col">Prenom</th>
+						<th  scope="col">Username</th>
+						<th  scope="col">Role</th>
+						<th  scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
