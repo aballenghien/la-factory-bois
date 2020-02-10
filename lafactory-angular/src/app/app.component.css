@@ -34,8 +34,6 @@ li a:hover {
 }
 
 form {
-    position: relative;
-    left: 200px;
-    top: 10px;
-    left: 800px;
+    margin-top: 10px;
+    margin-left: 800px;
 }

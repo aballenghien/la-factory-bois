@@ -11,6 +11,8 @@ import { IdeesComponent } from './idees/idees.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idees', component: IdeesComponent },
+  { path: 'modele/:id', component: HomeComponent },
+  { path: 'modele/:id/:niveau', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
