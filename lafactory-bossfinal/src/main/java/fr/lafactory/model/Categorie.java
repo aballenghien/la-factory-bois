@@ -2,6 +2,7 @@ package fr.lafactory.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class Categorie {
 	@OneToMany(mappedBy = "catMere")
 	private List<Categorie> catFilles;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name = "modele_categorie",
 			joinColumns =  @JoinColumn(name = "MODCAT_CAT_ID", referencedColumnName = "CAT_ID"),

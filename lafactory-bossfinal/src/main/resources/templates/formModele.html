@@ -47,7 +47,7 @@
 						th:value="${ categorie.id }" th:text="${ categorie.nom }"></option>
 				</select>
 				<div id="addCategorie" onClick="ajouterCategorie()">Ajouter Catégorie</div>				
-				<textarea name="listeDesCategories" id="listeDesCategories" th:text="listeDesCategories"></textarea>
+				<textarea name="listeDesCategories" id="listeDesCategories" th:text="${listeDesCategories}"></textarea>
 			</div>
 			<button th:if="${ modele.id == 0 }" type="submit"
 				class="btn btn-outline-primary">Ajouter</button>

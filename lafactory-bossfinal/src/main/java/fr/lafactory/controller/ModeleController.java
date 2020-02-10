@@ -34,10 +34,16 @@ public class ModeleController {
 	@Autowired
 	private IDAOCategorie daoCategorie;
 
-	@GetMapping("/listeModeles")
+	@GetMapping("/modele")
 	public String getModeles(Model model) {
 		model.addAttribute("lstModeles",daoModele.findAll());
 		return "/listeModeles";
+	}
+	
+	@GetMapping("/supprimerModele/{id}")
+	public String deleteModele(Model model, @PathVariable int id) {
+		daoModele.deleteById(id);
+		return "redirect:/modele";
 	}
 	
 	@GetMapping("/ajouterModele")
@@ -48,6 +54,7 @@ public class ModeleController {
 	}
 	
 	@PostMapping("/ajouterModele")
+	@JsonView(Views.ModeleWithCategories.class)
 	public String add(@Valid @ModelAttribute Modele modele, BindingResult result, Model model, @RequestParam String listeDesCategories) {
 		if(result.hasErrors()) {
 			model.addAttribute("modele",modele);
@@ -59,15 +66,18 @@ public class ModeleController {
 		}
 		List<String> categoriesAAjouter = Arrays.asList(listeDesCategories.split("\n"));
 		categoriesAAjouter.stream().forEach(cat -> {
-			Categorie catAAjouter = daoCategorie.findById(Integer.parseInt(cat.split(":")[0])).orElse(null);
-			modele.getCategories().add(catAAjouter);
+			String idCat = cat.split(":")[0];
+			if(!idCat.equals("")) {
+				Categorie catAAjouter = daoCategorie.findById(Integer.parseInt(cat.split(":")[0])).orElse(null);
+				modele.getCategories().add(catAAjouter);
+			}
 		});
 		
 		
 		daoModele.save(modele);
 
 		
-		return "redirect:/listeModeles";
+		return "redirect:/modele";
 	}
 	
 	@GetMapping( "/modifierModele/{id}")
@@ -100,11 +110,14 @@ public class ModeleController {
 		}
 		List<String> categoriesAAjouter = Arrays.asList(listeDesCategories.split("\n"));
 		categoriesAAjouter.stream().forEach(cat -> {
-			Categorie catAAjouter = daoCategorie.findById(Integer.parseInt(cat.split(":")[0])).orElse(null);
-			modele.getCategories().add(catAAjouter);
+			String idCat = cat.split(":")[0];
+			if(!idCat.equals("")) {
+				Categorie catAAjouter = daoCategorie.findById(Integer.parseInt(cat.split(":")[0])).orElse(null);
+				modele.getCategories().add(catAAjouter);
+			}
 		});
 		daoModele.save(modele);
-		return "redirect:/listeModeles";
+		return "redirect:/modele";
 	}
 	
 	
