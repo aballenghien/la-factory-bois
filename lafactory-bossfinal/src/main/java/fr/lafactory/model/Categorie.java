@@ -2,6 +2,7 @@ package fr.lafactory.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Categorie {
 	@JoinColumn(name = "CATMERE_ID")
 	private Categorie catMere;
 	
-	@OneToMany(mappedBy = "catMere")
+	@OneToMany(mappedBy = "catMere", cascade = CascadeType.REMOVE)
 	private List<Categorie> catFilles;
 	
 	@ManyToMany
