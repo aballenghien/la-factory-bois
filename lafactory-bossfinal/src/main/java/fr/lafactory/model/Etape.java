@@ -18,30 +18,27 @@ import fr.lafactory.views.Views;
 @Table(name="etape")
 public class Etape {
 
-	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ETA_ID")
 	@JsonView(Views.Common.class)
 	private int id;
 	
-	@JsonView(Views.Etape.class)
 	@Column(name="ETA_ORDRE", nullable = false)
 	@NotNull
 	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private int ordre;
 	
-	@JsonView(Views.Etape.class)
 	@Column(name="ETA_TITRE")
 	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String titre;
 	
-	@JsonView(Views.Etape.class)
+
 	@Column(name="ETA_TEXTE")
 	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String texte;
 	
-	@JsonView(Views.Etape.class)
+
 	@Column(name="ETA_IMAGE")
 	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String image;
