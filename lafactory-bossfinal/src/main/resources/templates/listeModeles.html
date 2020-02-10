@@ -1,5 +1,6 @@
 <!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
 <head>
 <meta charset="UTF-8">
 <title>Liste des modèles</title>
@@ -7,25 +8,30 @@
 <body>
 	<div>
 		<h1>Liste des Modeles</h1>
-		<a th:href="@{ajouterModele}">Ajouter
+		<a th:href="@{ajouterModele}" class="btn btn-success">Ajouter
 			un nouveau modele</a>
-		<table>
-			<thead>
+		<table class="table table-striped">
+			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Id</th>
 					<th scope="col">Nom</th>
+					<th scope="col">Description</th>
 					<th scope="col">Lien vidéo</th>
+					<th scope="col">Image</th>
 					<th scope="col">Temps de réalisation</th>
 					<th scope="col">Niveau</th>
 					<th scope="col">Quantité de bois nécessaires</th>
 					<th scope="col">Note moyenne</th>
 					<th scope="col">Visible</th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="modele : ${ lstModeles }">
 					<th scope="row">[[${ modele.id }]]</th>
 					<td>[[${ modele.nom }]]</td>
+					<td>[[${ modele.description }]]</td>
+					<td>[[${ modele.urlImage }]]</td>
 					<td>[[${ modele.lienVideo }]]</td>
 					<td>[[${ modele.tempsRealisation }]]</td>
 					<td>[[${ modele.niveau }]]</td>
@@ -33,8 +39,8 @@
 					<td>[[${ modele.noteMoy }]]</td>
 					<td th:if="${ modele.visible}"><input type="checkbox" checked disabled/></td>
 					<td th:if="${ !modele.visible}"><input type="checkbox" disabled/></td>
-					<td><a th:href="@{ modifierModele/{id}(id=${ modele.id }) }">Editer</a>
-						<a th:href="@{ supprimerModele/{id}(id=${ modele.id }) }">Supprimer</a></td>
+					<td><a th:href="@{ modifierModele/{id}(id=${ modele.id }) }" class ="btn btn-warning">Editer</a>
+						<a th:href="@{ supprimerModele/{id}(id=${ modele.id }) }" class ="btn btn-danger">Supprimer</a></td>
 				</tr>
 			</tbody>
 		</table>

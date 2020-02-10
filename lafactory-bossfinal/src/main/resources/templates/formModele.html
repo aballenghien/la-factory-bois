@@ -1,54 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Modele</title>
 </head>
 <body>
-<script type="text/javascript" th:src="@{modele.js}"></script>
+<script type="text/javascript" th:src="modele.js"></script>
 	<div class="container-fluid">
-		<form method="POST" name="formModele">
+		<form method="POST" name="formModele" >
 			<h1 th:if="${modele.id == 0 }">Ajouter un modele</h1>
 			<h1 th:if="${modele.id != 0 }">Editer un modele</h1>
-			<div>
-				<div th:errors="${modele.nom}">Message d'erreur par défaut</div>
+			<div class="form-group">
 				<label for="nom">Nom du modele : </label> 
-				<input type="text" name="nom" id="nom" th:value="${ modele?.nom }"/>
+				<input type="text" name="nom" id="nom" th:value="${ modele?.nom }" class="form-control"/>
+				<div th:errors="${modele.nom}" class="alert alert-danger" role="alert">Message d'erreur par défaut</div>
 			</div>
-			<div>
+			<div class="form-group">
+				<label for="description">Description du modele : </label> 
+				<input type="text" name="description" id="description" th:value="${ modele?.description }" class="form-control"/>
+				<div th:errors="${modele.description}" class="alert alert-danger" role="alert">Message d'erreur par défaut</div>
+			</div>
+			<div class="form-group">
 				<label for="tempsRealisation">Temps de réalisation (en minutes) : </label> 
-				<input type="number" name="tempsRealisation" id="tempsRealisation" th:value="${ modele?.tempsRealisation }" />
+				<input type="number" name="tempsRealisation" id="tempsRealisation" th:value="${ modele?.tempsRealisation }" class="form-control" />
 			</div>
-			<div>
+			<div class="form-group">
 				<label for="niveau">Niveau : </label>
-				<select name="niveau" id="niveau">
+				<select name="niveau" id="niveau" class="form-control">
 					<option th:each="niveau : ${ lstNiveaux }"
 							th:value="${ niveau }" th:text="${niveau}" 
 							th:selected="${ niveau == modele?.niveau }" />
 				</select>
 			</div>
-			<div>
+			<div class="form-group">
 				<label for="qteBoisNecessaire">Quantité de bois nécessaire : </label> 
-				<input type="number" name="qteBoisNecessaire" id="qteBoisNecessaire" th:value="${ modele?.qteBoisNecessaire }" />
+				<input type="number" name="qteBoisNecessaire" id="qteBoisNecessaire" th:value="${ modele?.qteBoisNecessaire }" class="form-control"/>
 			</div>
-			<div>
+			<div class="form-group">
 				<label for="visible">Visible pour le visiteur : </label> 
-				<input type="checkbox" name="visible" id="visible" th:checked="${modele?.visible}" />
+				<input type="checkbox" name="visible" id="visible" th:checked="${modele?.visible}"/>
 			</div>
-			<div>
+			<div class="form-group">
 				<label for="lienVideo">Lien de la vidéo (facultatif) : </label> 
-				<input type="text" name="lienVideo" id="lienVideo" th:value="${ modele?.lienVideo }" />
+				<input type="text" name="lienVideo" id="lienVideo" th:value="${ modele?.lienVideo }" class="form-control"/>
 			</div>
-			<div>
+			<div class="form-group">
+				<label for="urlImage">Image descriptive : </label> 
+				<input type="text" name="urlImage" id="urlImage" th:value="${ modele?.urlImage }" class="form-control"/>
+				<div th:errors="${modele.urlImage}" class="alert alert-danger" role="alert">Message d'erreur par défaut</div>
+			</div>
+			<div class="form-group">
 				<label for="categorie">Categorie : </label> 
-				<select id="categorie" name="categorie">
+				<select id="categorie" name="categorie" class="form-control">
 					<option value=0>--Selectionner une catégorie--</option>
 					<option th:each="categorie : ${ lstCategories }"
 						th:value="${ categorie.id }" th:text="${ categorie.nom }"></option>
 				</select>
-				<div id="addCategorie" onClick="ajouterCategorie()">Ajouter Catégorie</div>				
-				<textarea name="listeDesCategories" id="listeDesCategories" th:text="${listeDesCategories}"></textarea>
-			</div>
+				<div id="addCategorie" onClick="ajouterCategorie()" class="btn btn-outline-primary">Ajouter Catégorie</div>				
+				<textarea name="listeDesCategories" id="listeDesCategories" th:text="${listeDesCategories}" class="form-control"></textarea>
+			</div >
 			<button th:if="${ modele.id == 0 }" type="submit"
 				class="btn btn-outline-primary">Ajouter</button>
 			<button th:if="${ modele.id != 0 }" type="submit"
