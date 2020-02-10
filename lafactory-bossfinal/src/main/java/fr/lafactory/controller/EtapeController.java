@@ -1,5 +1,7 @@
 package fr.lafactory.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,9 @@ public class EtapeController {
 	@Autowired
 	private IDAOEtape daoEtape;
 
-
+	@Autowired
+	private IDAOModele daoModele;
+	
 	@GetMapping("/etape")
 	public String findAll(Model model) {
 		model.addAttribute("etapes", daoEtape.findAll());
@@ -76,6 +80,12 @@ public class EtapeController {
 		daoEtape.save(etape);
 		return "redirect:/etape";
 		
+	}
+	
+
+	@ModelAttribute("modeles")
+	public List<Modele> getModeles(){
+		return daoModele.findAll();
 	}
 	
 	
