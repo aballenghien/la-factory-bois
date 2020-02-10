@@ -1,4 +1,5 @@
 import { Idee } from './idee';
+import { Role } from './role';
 
 export class Visiteur {
     constructor(
@@ -7,6 +8,6 @@ export class Visiteur {
         public prenom?: string,
         public mail?: string,
         public idees?: Array<Idee>,
-        public role?: string,
+        public role?: Role,
     ) {}
 }

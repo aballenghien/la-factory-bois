@@ -1,17 +1,20 @@
 import { Etape } from './etape';
 import { Categorie } from './categorie';
+import { Niveau } from './niveau';
 
 export class Modele {
     constructor(
         public id?: number,
         public nom?: string,
         public tempsrealisation?: number,
-        public niveau?: string,
+        public niveau?: Niveau,
         public qteBoisNecessaire?: number,
         public noteMoy?: number,
         public visible?: boolean,
         public lienVideo?: string,
         public etapes?: Array<Etape>,
-        public categories?: Array<Categorie>
+        public categories?: Array<Categorie>,
+        public imageFinale?: string,
+        public description?: string
     ) {}
 }
