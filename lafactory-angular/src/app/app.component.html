@@ -1,0 +1,37 @@
+<html>
+    <h1 class="text-center">LA Factory</h1>
+
+    <div class="text-center">
+        <img src= "https://st2.depositphotos.com/4448255/11803/i/950/depositphotos_118032594-stock-photo-old-shabby-wooden-planks-with.jpg"
+            width="500" height="70"/>
+    </div>
+
+    <div class="navigation-container">
+        <nav>
+            <li><a [routerLink]="['/home']">Catégories</a></li>
+            <li><a [routerLink]="['/idees']">Boite à Idées</a></li>
+        </nav>
+    </div>
+
+    <form>
+        <div class="form-row col-7 align-items-center">
+           <select class="form-control col-sm-3">
+               <option selected>Catégories</option>
+                <option *ngFor="let categorie of categories">{{categorie.nom}}</option>
+           </select>
+
+           <select class="form-control col-sm-3">
+                <option selected>Difficulté</option>
+               <option>OCCASIONNEL</option>
+               <option>NORMAL</option>
+               <option>AVANCE</option>
+               <option>EXERT</option>
+           </select>
+
+           <input class="form-control col-sm-3" type="text" placeholder="Recherche"/>
+
+           <button (click)="afficherTuto()" class="btn btn-dark col-sm-1">OK</button>
+        </div>
+    </form>
+    <router-outlet></router-outlet>
+</html>
