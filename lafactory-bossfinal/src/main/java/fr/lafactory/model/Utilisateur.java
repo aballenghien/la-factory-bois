@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 @DiscriminatorValue("utilisateur")
 public class Utilisateur extends Personne {
 	
-	@Column (name = "UTI_USERNAME", nullable = false, length = 100)
+	@Column (name = "UTI_USERNAME", length = 100)
 	@NotEmpty(message = "Veuillez entrer votre username")
 	private String username;
 	

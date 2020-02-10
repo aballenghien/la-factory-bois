@@ -8,7 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.lafactory.views.Views;
 
 @Entity
 @Table(name="etape")
@@ -17,26 +21,37 @@ public class Etape {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ETA_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="ETA_ORDRE", nullable = false)
-	@NotEmpty
+	@NotNull
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private int ordre;
 	
 	@Column(name="ETA_TITRE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String titre;
 	
+
 	@Column(name="ETA_TEXTE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String texte;
 	
+
 	@Column(name="ETA_IMAGE")
+	@JsonView({Views.Etape.class,Views.ModeleWithEtapes.class})
 	private String image;
 	
+	@JsonView(Views.Etape.class)
 	@ManyToOne
 	@JoinColumn(name="ETA_MOD_ID", nullable = false)
-	@NotEmpty
+	@NotNull
 	private Modele modele;
 
+	
+	
+	
 	public int getId() {
 		return id;
 	}
