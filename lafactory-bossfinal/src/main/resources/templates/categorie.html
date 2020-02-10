@@ -23,10 +23,10 @@
    <tbody>
    		<tr th:each="maCategorie : ${categories}">
    		 <td scope="row">[[${maCategorie.id }]]</td>
-   		 <td scope="row">[[${maCategorie.catMere }]]</td>
+   		 <td scope="row">[[${maCategorie.catMere?.id }]]</td>
    		 <td scope="row">[[${maCategorie.nom }]]</td>
    		 <td> <a th:href="@{deleteCategorie(categorieId=${maCategorie.id})}"> Supprimer</a>
-	       <a th:href="@{modifCategorie(categorieId=${maCategorie.id}, categorieCatMere=${maCategorie.catMere}, categorieNom=${maCategorie.nom})}"> Modifier</a></td>
+	       <a th:href="@{modifCategorie(categorieId=${maCategorie.id})}"> Modifier</a></td>
    </tbody>
  </table>
 

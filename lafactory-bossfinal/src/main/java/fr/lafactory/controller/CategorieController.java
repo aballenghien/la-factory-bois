@@ -1,5 +1,7 @@
 package fr.lafactory.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,18 +59,26 @@ public class CategorieController {
 	public String getAffiche(Model model, HttpServletRequest request) {
 		
 		int id = Integer.parseInt(request.getParameter("categorieId"));
-		Categorie c = daoCategorie.findById(id).orElse(null);
+		
+		List<Categorie> mesCategories = daoCategorie.findAll();
+		mesCategories.remove(daoCategorie.findById(id).get());
+		model.addAttribute("categories", mesCategories);
+		Categorie c = daoCategorie.findById(id).get();
+	
 		model.addAttribute("categorie", c);
+		model.addAttribute("catMereId", daoCategorie.findById(id).get().getCatMere().getId());
 		return "addCategorie";
 	}
 	
 	@PostMapping("/modifCategorie")
 	public String modif (@Valid @ModelAttribute Categorie categorie,
 			BindingResult result,
-			HttpServletRequest request
+			HttpServletRequest request,
+			Model model
 			) {
 		
 		categorie.setId(Integer.parseInt(request.getParameter("categorieId")));
+		
 		
 		daoCategorie.save(categorie);
 		

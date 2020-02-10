@@ -3,10 +3,10 @@
 xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title th:if= "${categorie == null}">Ajout d'une categorie</title>
+<title th:if= "${categorie.id == 0}">Ajout d'une categorie</title>
   	
   	
-  <title th:if= "${categorie != null}">Modification d'une categorie</title>
+  <title th:if= "${categorie.id != 0}">Modification d'une categorie</title>
 </head>
 <body>
 
@@ -17,9 +17,7 @@ xmlns:th="http://www.thymeleaf.org">
     <input type="text" name="nom" th:value="${categorie?.nom}" required>
 	
   </div>
-  
- 
-   
+
    
     <div>
     	<label>Categorie mere</label>
@@ -28,18 +26,13 @@ xmlns:th="http://www.thymeleaf.org">
       			th:each="categorie : ${categories}"
      			th:value="${categorie.id}"
       			th:text="${categorie.nom}"
-      			th:selected="${categorie.id == categorie?.catMere?.id}">
+      			th:selected="${categorie.id == catMereId}">
     </select>
+    
     
    </div>
    
 
-
- 
-  
-  
-
-	
   <button th:if= "${categorie.id == 0}" type="submit" class="btn btn-primary">Ajouter</button>
   	
   	
