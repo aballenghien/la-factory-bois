@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ public class CategorieController {
 	@Autowired
 	private IDAOCategorie daoCategorie;
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/categorie")
 	public String findAll(Model model) {
 		
@@ -27,6 +29,7 @@ public class CategorieController {
 		return "categorie";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/addCategorie")
 	public String categorie(Model model) {
 		
@@ -37,6 +40,7 @@ public class CategorieController {
 		return "addCategorie";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@PostMapping("/addCategorie")
 	public String add(
 			@Valid @ModelAttribute Categorie categorie,
@@ -46,6 +50,7 @@ public class CategorieController {
 		return "redirect:/categorie";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/deleteCategorie")
 	public String delete(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("categorieId"));
@@ -55,6 +60,7 @@ public class CategorieController {
 		return "redirect:/categorie";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/modifCategorie")
 	public String getAffiche(Model model, HttpServletRequest request) {
 		
@@ -75,6 +81,7 @@ public class CategorieController {
 		return "addCategorie";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@PostMapping("/modifCategorie")
 	public String modif (@Valid @ModelAttribute Categorie categorie,
 			BindingResult result,

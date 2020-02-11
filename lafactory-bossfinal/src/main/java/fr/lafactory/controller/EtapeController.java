@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ public class EtapeController {
 	@Autowired
 	private IDAOModele daoModele;
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping("/etape/modele")
 	public String findAll(Model model, @RequestParam int idModele) {
 		model.addAttribute("etapes", daoEtape.findEtapesByIdModele(idModele).orElse(null));
@@ -34,7 +36,7 @@ public class EtapeController {
 		return "etape";
 	}
 
-	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping("/ajouterEtape")
 	public String add(Model model, @RequestParam int idModele) {
 		Etape etape = new Etape();
@@ -43,6 +45,7 @@ public class EtapeController {
 		return "ajouterEtape";
 	}
 
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@PostMapping("/ajouterEtape")
 	public String add(@Valid @ModelAttribute Etape etape, BindingResult result, @RequestParam int idModele) {
 		
@@ -56,7 +59,7 @@ public class EtapeController {
 	
 	
 	
-	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping("/supprimerEtape")
 	public String delete(@RequestParam int id) {
 		Etape etape = daoEtape.findById(id).orElse(null);
@@ -65,7 +68,7 @@ public class EtapeController {
 	}
 	
 
-	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping("/modifierEtape")
 	public String edit(Model model, @RequestParam int id) {
 		model.addAttribute("etapes", daoEtape.findAll());
@@ -75,6 +78,7 @@ public class EtapeController {
 		return "ajouterEtape";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@PostMapping("/modifierEtape")
 	public String edit(@Valid @ModelAttribute Etape etape, BindingResult result, Model model) {
 		if(result.hasErrors()) {

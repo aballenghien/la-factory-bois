@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,13 +25,14 @@ public class UtilisateurController {
 	@Autowired
 	private IDAOUtilisateur daoUtilisateur;
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/listeUtilisateur")
 	public String findAll(Model model) {
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
 		return "listeUtilisateur";
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/ajouterUtilisateur")
 	public String ajouterProduit(Model model) {
 		model.addAttribute("utilisateur",  new Utilisateur());
@@ -38,6 +40,7 @@ public class UtilisateurController {
 		return "formUtilisateur";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@PostMapping("/ajouterUtilisateur")
 	public String ajouterUtilisateur(
 			@Valid
@@ -63,6 +66,7 @@ public class UtilisateurController {
 		return "redirect:/listeUtilisateur";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/supprimerUtilisateur")
 	public String supprimerUtilisateur(
 			@RequestParam int id) {
@@ -71,7 +75,7 @@ public class UtilisateurController {
 		return "redirect:/listeUtilisateur";
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/editerUtilisateur")
 	public String edit(Model model, @RequestParam int id) {
 		Utilisateur u = daoUtilisateur.findById(id).orElse(null);
@@ -79,6 +83,7 @@ public class UtilisateurController {
 		return "formUtilisateur";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@PostMapping("/editerUtilisateur")
 	public String edit(@Valid
 			@ModelAttribute Utilisateur utilisateur, BindingResult result, Model model) {

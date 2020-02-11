@@ -10,12 +10,13 @@ export class ModeleService {
 
   public modeles: Array<Modele> = [];
   public modele: Modele;
+  public myOptions: Object = this.srv.security();
 
   constructor(private srv: AppConfigService, private http: HttpClient) { }
 
   public findAll(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + 'modele')
+      .get<Array<Modele>>(this.srv.url + 'modele', this.myOptions)
       .subscribe(resp =>
         this.modeles = resp);
     return this.modeles;
@@ -23,7 +24,7 @@ export class ModeleService {
 
   public findByCategorie(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + 'modele')
+      .get<Array<Modele>>(this.srv.url + 'modele', this.myOptions)
       .subscribe(resp =>
         this.modeles = resp);
         return this.modeles;
@@ -31,7 +32,7 @@ export class ModeleService {
 
   public findByDifficulte(): Array<Modele> {
     this.http
-      .get<Array<Modele>>(this.srv.url + 'modele')
+      .get<Array<Modele>>(this.srv.url + 'modele', this.myOptions)
       .subscribe(resp =>
         this.modeles = resp);
         return this.modeles;
@@ -39,7 +40,7 @@ export class ModeleService {
 
   public findById(id: number): Modele {
     this.http
-      .get<Modele>(this.srv.url+'modele/'+id)
+      .get<Modele>(this.srv.url+'modele/'+id, this.myOptions)
       .subscribe(resp => this.modele = resp);
     return this.modele;
   }

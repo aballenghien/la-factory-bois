@@ -11,12 +11,13 @@ export class IdeeService {
   constructor(private httpClient : HttpClient, private srvAppConfig: AppConfigService) { }
 
   public idees: Array<Idee> = null;
+  public myOptions: Object = this.srvAppConfig.security();
   // private idee : Idee = new Idee();
 
   public send (idee : Idee):void{
     console.log(idee);
       this.httpClient
-        .post<Idee>(`${ this.srvAppConfig.url + 'idee' }`, idee)
+        .post<Idee>(`${ this.srvAppConfig.url + 'idee' }`, idee, this.myOptions)
         .subscribe(resp => this.idees.push(resp));
   }
 }

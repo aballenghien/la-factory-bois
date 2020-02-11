@@ -3,6 +3,7 @@ package fr.lafactory.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ public class IdeeController {
 	@Autowired 
 	private IDAOVisiteur daoVisiteur;
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping(value="/idee")
 	public String home(Model model) {
 		
@@ -48,6 +50,7 @@ public class IdeeController {
 //		
 //	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/archiveIdee")
 	public String edit(@RequestParam int id) {
 		Idee idee=daoIdee.findById(id).get();
@@ -77,6 +80,7 @@ public class IdeeController {
 //		
 //	}
 
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/ajouteIdee")
 	public String edit(@RequestBody Idee idee) {
 		daoIdee.save(idee);

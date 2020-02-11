@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,18 +35,21 @@ public class ModeleController {
 	@Autowired
 	private IDAOCategorie daoCategorie;
 
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping("/modele")
 	public String getModeles(Model model) {
 		model.addAttribute("lstModeles",daoModele.findAll());
 		return "/listeModeles";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/supprimerModele/{id}")
 	public String deleteModele(Model model, @PathVariable int id) {
 		daoModele.deleteById(id);
 		return "redirect:/modele";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@GetMapping("/ajouterModele")
 	public String add(Model model) {
 		Modele modele = new Modele();
@@ -53,6 +57,7 @@ public class ModeleController {
 		return "/formModele";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR')")
 	@PostMapping("/ajouterModele")
 	@JsonView(Views.ModeleWithCategories.class)
 	public String add(@Valid @ModelAttribute Modele modele, BindingResult result, Model model, @RequestParam String listeDesCategories) {
@@ -80,6 +85,7 @@ public class ModeleController {
 		return "redirect:/modele";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@GetMapping( "/modifierModele/{id}")
 	@JsonView(Views.ModeleWithCategories.class)
 	public String editModeleGet(@PathVariable(value="id", required=true) int id,Model model) {
@@ -93,6 +99,7 @@ public class ModeleController {
 		return "formModele";
 	}
 	
+	@PreAuthorize("hasRole('ADMINISTRATEUR') or hasRole('TECHNICIEN')")
 	@PostMapping( "/modifierModele/{id}")
 	public String editModelePost(@PathVariable(value="id", required=true) int id,
 			@Valid @ModelAttribute Modele modele,
