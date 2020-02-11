@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -79,7 +80,10 @@ public class Modele {
 	@OneToMany(mappedBy = "modele", cascade = CascadeType.REMOVE)
 	@JsonView({ Views.ModeleWithEtapes.class, Views.ModeleWithEtapesAndCategories.class})
 	private List<Etape> etapes;
-	
+
+	@OneToMany(mappedBy = "modele", cascade = CascadeType.REMOVE)
+	@JsonView({ Views.ModeleWithAppreciation.class, Views.Modele.class})
+	private List<Appreciation> appreciations;
 
 	@ManyToMany
 	@JoinTable(
@@ -90,6 +94,8 @@ public class Modele {
 			)
 	@JsonView({Views.ModeleWithCategories.class, Views.ModeleWithEtapesAndCategories.class})
 	private List<Categorie> categories;
+	
+	
 	
 	public Modele() {
 		
