@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import fr.lafactory.model.Role;
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	@Configuration
@@ -19,7 +21,7 @@ public class SecurityConfig {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.antMatcher("/api/**").authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.antMatchers("/**").hasAnyRole("ADMIN", "MUSICIEN")
+				.antMatchers("/**").hasAnyRole("ADMINISTRATEUR", "TECHNICIEN")
 				.and().httpBasic()
 				.and().csrf().disable();
 		}
@@ -33,13 +35,13 @@ public class SecurityConfig {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
 				.antMatchers("/assets/**").permitAll()
-				.antMatchers("/**").hasAnyRole("ADMIN", "MUSICIEN")
+				.antMatchers("/**").hasAnyRole("ADMINISTRATEUR", "TECHNICIEN")
 				.and()
 				.formLogin()
-					.loginPage("/account/login")
+					.loginPage("/login")
 					.loginProcessingUrl("/performLogin")
-					.defaultSuccessUrl("/listeProduits", true)
-					.failureUrl("/account/login?error=true")
+					.defaultSuccessUrl("/modele", true)
+					.failureUrl("/login?error=true")
 					.permitAll();
 		}
 	}

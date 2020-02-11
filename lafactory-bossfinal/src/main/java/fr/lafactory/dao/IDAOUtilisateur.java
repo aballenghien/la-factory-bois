@@ -7,4 +7,6 @@ import fr.lafactory.model.Utilisateur;
 
 public interface IDAOUtilisateur extends JpaRepository<Utilisateur,Integer> {
 
+	Utilisateur findByUsername(String username);
+
 }

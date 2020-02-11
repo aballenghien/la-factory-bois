@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import fr.formation.DAO.IDAOUtilisateur;
+import fr.lafactory.dao.IDAOUtilisateur;
 
 @Service
 public class AuthService  implements UserDetailsService {
