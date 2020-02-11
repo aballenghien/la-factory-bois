@@ -9,8 +9,8 @@
 <title>Etape</title>
 </head>
 <body>
-	<h1>Liste des etapes</h1>
-	<a class="btn btn-success" href="ajouterEtape">Ajouter une etape</a>
+	<h1>Liste des etapes du modèle [[${modele.nom}]]</h1>
+	<a class="btn btn-success" th:href="@{ajouterEtape(idModele=${modele.id})}">Ajouter une etape</a>
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>

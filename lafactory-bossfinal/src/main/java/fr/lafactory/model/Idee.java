@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -19,8 +20,8 @@ public class Idee {
 	@Column(name = "IDE_ID")
 	private int id;
 	@Column(name="IDE_DESCRIPTION", length = 1000, nullable = false)
-	@NotEmpty
-	@Size(max = 1000)
+	@NotBlank(message = "Vous ne pouvez pas envoyé un message vide")
+	@Size(max = 1000, message = "Le message ne doit pas dépasser 1000 caractères")
 	private String description;
 	@Column(name = "IDE_ARCHIVE")
 	private Boolean archive = false;
