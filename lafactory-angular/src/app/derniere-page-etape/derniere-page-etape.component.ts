@@ -46,6 +46,11 @@ export class DernierePageEtapeComponent implements OnInit {
       }
     }
     this.appreciationService.save(this.appreciation);
+    this.appreciation = new Appreciation();
+  }
+
+  public enregistrerVote(){
+    
   }
 
 }
