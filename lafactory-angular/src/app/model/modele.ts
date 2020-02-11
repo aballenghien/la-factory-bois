@@ -16,7 +16,7 @@ export class Modele {
         public etapes?: Array<Etape>,
         public appreciations?: Array<Appreciation>,
         public categories?: Array<Categorie>,
-        public imageFinale?: string,
+        public urlImage?: string,
         public description?: string
     ) {}
 }

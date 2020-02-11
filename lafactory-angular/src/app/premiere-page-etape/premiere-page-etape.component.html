@@ -35,7 +35,9 @@
         </table>
         <br>
         <br>
-        <img class="mr-3 image1" src="{{srvModele.modele.imageFinale}}" />
+        <div>
+            <img class="mr-3 image1" src="{{srvModele.modele.urlImage}}" >
+        </div>
         <br>
         <br>
         <!-- <div *ngIf="srvModele.modele.image != null || srvModele.modele.image == ''">
@@ -47,7 +49,7 @@
         <br>
         <br>
 
-        <button button (click)="allerEtape(modeleService.modele)" type="button" class="btn btn-success monBouton btn-lg btn-block">Commencer le modèle</button>
+        <button (click)="allerEtape(srvModele.modele)" type="button" class="btn btn-success monBouton btn-lg btn-block">Commencer le modèle</button>
 
         <!-- <button class="btn btn-success" onclick="@{etape}">Commencer</button> -->
 
