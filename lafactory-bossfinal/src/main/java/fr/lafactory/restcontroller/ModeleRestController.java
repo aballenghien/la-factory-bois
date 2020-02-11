@@ -28,7 +28,7 @@ public class ModeleRestController {
 	@GetMapping("{id}")
 	@JsonView(Views.ModeleWithEtapes.class)
 	public Modele getModeleById(@PathVariable int id) {
-		return daoModele.findById(id).orElse(null);
+		return daoModele.findByIdWithEtapes(id);
 	}
 	
 	//FindByCategorie

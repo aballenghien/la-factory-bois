@@ -9,7 +9,7 @@ import { Modele } from '../model/modele';
 export class ModeleService {
 
   public modeles: Array<Modele> = [];
-  public modele: Modele;
+  public modele: Modele = new Modele();
 
   constructor(private srv: AppConfigService, private http: HttpClient) { }
 
@@ -37,10 +37,17 @@ export class ModeleService {
         return this.modeles;
   }
 
-  public async findById(id: number): Promise<Modele> {
+  /**public async findById(id: number): Promise<Modele> {
     let modele: Modele =  await this.http
     .get<Array<Modele>>(this.srv.url+"modele/"+id)
     .toPromise().then();
     return modele;
+  }**/
+
+  public findById(id: number): Modele {
+    this.http
+      .get<Modele>(this.srv.url+'modele/'+id)
+      .subscribe(resp => this.modele = resp);
+    return this.modele;
   }
 }
