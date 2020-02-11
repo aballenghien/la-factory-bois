@@ -9,7 +9,7 @@ import { Modele } from '../model/modele';
 export class ModeleService {
 
   public modeles: Array<Modele> = [];
-  public modele: Modele;
+  public modele: Modele = new Modele();
 
   constructor(private srv: AppConfigService, private http: HttpClient) { }
 
