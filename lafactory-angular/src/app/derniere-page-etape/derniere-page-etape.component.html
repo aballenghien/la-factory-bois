@@ -3,16 +3,23 @@
     <div>
 
     </div>
-    <div>
-        <p>Bravo !!!!</p>
+    <div>        
         <h1>{{modeleService.modele.nom}}</h1>
         <a href="{{modeleService.modele.lienVideo}}"></a>
+        <div class="bravo">Bravo !!!!</div>
     </div>
-    <div>
-            <label>Nom : </label>
-            <input type="text" [(ngModel)]="appreciation.pseudo" />
-            <input type="number" [(ngModel)]="appreciation.note" />
-            <input type="submit" (click)="enregistrerAppreciation()" />
+    <div class="container">
+        <div class="form-group">
+            <label>Pseudo : </label>
+            <input type="text" [(ngModel)]="appreciation.pseudo" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Note : </label>
+            <input type="number" [(ngModel)]="appreciation.note"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" (click)="enregistrerAppreciation()" class="btn btn-outline-dark"/>
+        </div>
     </div>
 </div>
 

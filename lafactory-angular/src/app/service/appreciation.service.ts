@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { AppConfigService } from './service/app-config.service';
+import { AppConfigService } from './app-config.service';
 import { HttpClient } from '@angular/common/http';
-import { Appreciation } from './model/appreciation';
+import { Appreciation } from '../model/appreciation';
 import { StorageSessionServiceService } from './storage-session-service.service';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AppreciationService {
   public save(appreciation: Appreciation): void {
     if(appreciation.id >0){
       this.http
-      .put<Appreciation>(this.srv.url+"appreciation/modifier/"+appreciation.id, appreciation)
+      .put<Appreciation>(this.srv.url+"appreciation/modifier", appreciation)
       .subscribe(resp => this.storageSessionService.set("appreciation-enregistree",resp));
     }else{
       this.http
