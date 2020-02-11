@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdeesComponent } from './idees/idees.component';
 import { ModeleComponent } from './modele/modele.component';
+import { PremierePageEtapeComponent } from './premiere-page-etape/premiere-page-etape.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idees', component: IdeesComponent },
-  { path: 'modele/:id', component: HomeComponent },
-  { path: 'modele/:id/:niveau', component: HomeComponent },
+  { path: 'modeles/:id', component: ModeleComponent },
+  { path: 'modeles/:id/:niveau', component: ModeleComponent },
   { path: 'premiere-page-etape', component: PremierePageEtapeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
@@ -23,8 +24,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     IdeesComponent,
-    ModeleComponent
-    IdeesComponent,
+    ModeleComponent,
     PremierePageEtapeComponent
   ],
   imports: [

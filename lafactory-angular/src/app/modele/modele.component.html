@@ -1,27 +1,34 @@
 <html>
+<h1> Résultat de votre recherche</h1>
     <table>
    
  
         <tr *ngFor="let m of modeles">
-         <td> <img [src] =  "m.imageFinale"> </td>
-         <td> {{m.nom}}</td>
-         <td> {{m.tempsrealisation}}</td>
-         <td> {{m.niveau}}</td>
-         <td> {{m.noteMoy}}</td>
-        
-          
-         
-       
-        
-         
-       
+            <div class="media">
+                <img class="mr-3 image1" src="{{m.urlImage}}" >
+                
+                <div class="media-body">
+                  
+                  <div style="height: 10vh;" class="row align-items-center">
+                    <div class = "col"> <h5 class="mt-0">{{m.nom}}</h5> </div>
+                    <div class="col">
+                        {{m.tempsRealisation}} minutes
+                    </div>
+                    <div class="col">
+                        {{m.niveau}}
+                    </div>
+                    <div class="col">
+                        <div class= "col"> <button (click)="allerModele(m)" type="button" class="btn btn-success monBouton">Je veux le faire ! </button>  </div>
+                    </div>
+                    
+                  </div>
+                    <div>  {{m.description}}. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </div>
+                    
+              
+                  
+                </div>
+                 
+              </div>
         </tr>
-       
-       
-       
-       
-     
      </table>
-
-
 </html>
