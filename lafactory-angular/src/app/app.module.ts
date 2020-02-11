@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'modeles/:id/:niveau', component: ModeleComponent },
   { path: 'modeles/:id', component: ModeleComponent },
   { path: 'premiere-page-etape', component: PremierePageEtapeComponent },
+  { path: 'modele/:id', component : PremierePageEtapeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

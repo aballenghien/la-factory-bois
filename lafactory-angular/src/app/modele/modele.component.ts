@@ -45,6 +45,9 @@ export class ModeleComponent implements OnInit {
     });
   }
 
+  public allerModele(modele : Modele) : void {
+    this.router.navigate(['/modele', modele.id]);
+  }
   
 
 }
