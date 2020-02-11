@@ -1,4 +1,4 @@
-<html class="background">
+<div>
     <h1 class="text-center">LA Factory</h1>
 
     <div class="text-center">
@@ -13,7 +13,7 @@
             <li><a [routerLink]="['/premiere-page-etape']">FIRST_PAGE_ETAPE</a></li>
         </nav>
     </div>
-
+<div>
     <form>
         <div class="form-row align-items-center">
            <select class="form-control col-sm-3" [(ngModel)]="categorie.id" [ngModelOptions]="{standalone: true}">
@@ -33,6 +33,6 @@
            <button (click)="afficherModeles()" class="btn btn-dark col-sm-1">OK</button>
         </div>
     </form>
-
+</div>
     <router-outlet></router-outlet>
-</html>
+</div>
