@@ -19,7 +19,7 @@ export class PremierePageEtapeComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id=params["id"];
     });
-    this.id=1;
+    
     this.srvModele.findById(this.id);
   }
 
