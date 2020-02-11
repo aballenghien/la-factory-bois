@@ -36,6 +36,7 @@ export class DernierePageEtapeComponent implements OnInit {
     let appreciationSession: Appreciation = this.storageSessionService.get("appreciation-enregistree");
     if (!appreciationSession) {
       this.appreciation.dateCommentaire = new Date();
+      this.appreciation.modele = this.modeleService.modele;
     } else {
       this.appreciation.id = appreciationSession.id;
     }

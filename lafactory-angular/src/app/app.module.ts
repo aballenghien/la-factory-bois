@@ -30,8 +30,9 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     ModeleComponent,
-    PremierePageEtapeComponent
-    DernierePageEtapeComponent
+    PremierePageEtapeComponent,
+    DernierePageEtapeComponent,
+    IdeesComponent,
   ],
   imports: [
     BrowserModule,
