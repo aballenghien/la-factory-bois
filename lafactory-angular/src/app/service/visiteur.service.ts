@@ -1,4 +1,4 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Visiteur } from '../model/visiteur';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from './app-config.service';
@@ -19,4 +19,3 @@ export class VisiteurService {
         .subscribe(resp => this.visiteurs.push(resp));
   }
 }
-*/

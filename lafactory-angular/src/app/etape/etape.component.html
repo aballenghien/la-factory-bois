@@ -1,5 +1,5 @@
-<html >
-
+<html>
+<div class="etape">
   <h1>{{modeleService.modele?.nom}}</h1>
 <!-- <div *ngFor="let etape of modeleService.modele.etapes" ></div>
 <div >
@@ -15,8 +15,12 @@
         
         <div style="height: 10vh;" class="row align-items-center">
           <div class = "col"> <h5 class="mt-0">{{etape.titre}}</h5> </div>
-          
         </div> 
+        
+        
+
+
+
         <div style="width:1000px">{{etape.texte}}</div>
           
     
@@ -26,7 +30,9 @@
     </div>
 
 </tr>
-
+<div class="col">
+  <div class= "col"> <button (click)="allerModeleDerPage(modeleService.modele)" type="button" class="btn btn-success monBouton"> J'ai fini ! </button>  </div>
+</div>
 </table>
 
     <!-- <div id="demo" class="carousel slide" data-ride="carousel">
@@ -65,5 +71,5 @@
           <span class="sr-only">Next</span>
         </a>
       </div> -->
-
+    </div>
 </html>

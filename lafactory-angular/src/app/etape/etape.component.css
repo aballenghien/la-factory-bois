@@ -33,7 +33,7 @@ a[name="next"]{
     object-fit: cover; 
 }
 
-html{
+.etape{
     position: relative;
-    left: 250px;
+    padding-left: 250px;
 }
