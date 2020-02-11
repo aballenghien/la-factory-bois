@@ -3,6 +3,8 @@ package fr.lafactory.dao;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.NamedQuery;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,6 +22,11 @@ public interface IDAOModele extends JpaRepository<Modele, Integer> {
 	@JsonView(Views.ModeleWithEtapes.class)
 	@Query("Select m from Modele m left join fetch m.etapes e where m.id=?1")
 	public Modele findByIdWithEtapes(int id);
+	
+
+	@Query("SELECT m from Modele m left join fetch m.appreciations a where m.id=?1")
+	@JsonView(Views.ModeleWithAppreciation.class)
+	public Modele modeleWithNote(int id);
 	
 	@Query("Select m from Modele m left join m.categories c where c.id=?1")
 	@JsonView(Views.Modele.class)
