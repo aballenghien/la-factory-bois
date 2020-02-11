@@ -13,7 +13,7 @@ import { PremierePageEtapeComponent } from './premiere-page-etape/premiere-page-
 import { DernierePageEtapeComponent } from './derniere-page-etape/derniere-page-etape.component';
 import { EtapeComponent } from './etape/etape.component';
 
-import { SERVICE_SESSION_STORAGE, StorageSessionServiceService } from './storage-session-service.service';
+import { SERVICE_SESSION_STORAGE, StorageSessionServiceService } from './service/storage-session-service.service';
  
 
 const routes: Routes = [

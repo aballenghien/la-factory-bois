@@ -30,4 +30,6 @@ public class Views {
 	}
 	public static class Idee extends Common {
 	}
+	
+	public static class Appreciation extends Common {}
 }

@@ -26,24 +26,25 @@ public class Appreciation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "APP_ID")
-	@JsonView( Views.ModeleWithAppreciation.class)
+	@JsonView( {Views.Common.class,Views.ModeleWithAppreciation.class})
 	private int id;
 	
 	@Column(name = "APP_NOTE")
-	@JsonView( Views.ModeleWithAppreciation.class)
+	@JsonView( {Views.Appreciation.class,Views.ModeleWithAppreciation.class})
 	private double note;
 	
 	@Column(name = "APP_MESSAGE_DATE")
 	@Temporal(TemporalType.DATE)
-	@JsonView( Views.ModeleWithAppreciation.class)
+	@JsonView( {Views.Appreciation.class,Views.ModeleWithAppreciation.class})
 	private Date dateCommentaire;
 	
 	@Column(name = "APP_PSEUDO")
-	@JsonView( Views.ModeleWithAppreciation.class)
+	@JsonView( {Views.Appreciation.class,Views.ModeleWithAppreciation.class})
 	private String pseudo;
 	
 	@ManyToOne
 	@JoinColumn(name="APP_MOD_ID", nullable = false)
+	@JsonView( Views.Appreciation.class)
 	private Modele modele;
 
 	
