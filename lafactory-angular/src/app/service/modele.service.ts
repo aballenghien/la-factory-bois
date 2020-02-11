@@ -44,5 +44,8 @@ export class ModeleService {
     return this.modele;
   }
 
-
+  
+  public nombreEtapes(): number {
+    return this.modele.etapes.length;
+  }
 }

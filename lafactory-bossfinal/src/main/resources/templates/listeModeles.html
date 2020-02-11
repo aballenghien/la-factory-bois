@@ -40,7 +40,8 @@ th:replace="~{layout.html :: layout(~{::title}, ~{::body})}">
 					<td th:if="${ modele.visible}"><input type="checkbox" checked disabled/></td>
 					<td th:if="${ !modele.visible}"><input type="checkbox" disabled/></td>
 					<td><a th:href="@{ modifierModele/{id}(id=${ modele.id }) }" class ="btn btn-warning">Editer</a>
-						<a th:href="@{ supprimerModele/{id}(id=${ modele.id }) }" class ="btn btn-danger">Supprimer</a></td>
+						<a th:href="@{ supprimerModele/{id}(id=${ modele.id }) }" class ="btn btn-danger">Supprimer</a>
+						<a th:href="@{ etape/modele(idModele=${ modele.id }) }" class ="btn btn-light">Gérer les étapes</a></td>
 				</tr>
 			</tbody>
 		</table>

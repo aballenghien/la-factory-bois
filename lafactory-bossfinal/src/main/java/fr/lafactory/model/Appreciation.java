@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.lafactory.views.Views;
 
 
 
@@ -21,19 +26,24 @@ public class Appreciation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "APP_ID")
+	@JsonView( Views.ModeleWithAppreciation.class)
 	private int id;
 	
 	@Column(name = "APP_NOTE")
+	@JsonView( Views.ModeleWithAppreciation.class)
 	private double note;
 	
 	@Column(name = "APP_MESSAGE_DATE")
 	@Temporal(TemporalType.DATE)
+	@JsonView( Views.ModeleWithAppreciation.class)
 	private Date dateCommentaire;
 	
 	@Column(name = "APP_PSEUDO")
+	@JsonView( Views.ModeleWithAppreciation.class)
 	private String pseudo;
 	
 	@ManyToOne
+	@JoinColumn(name="APP_MOD_ID", nullable = false)
 	private Modele modele;
 
 	

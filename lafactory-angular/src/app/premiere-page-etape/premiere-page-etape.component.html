@@ -1,0 +1,45 @@
+<html>
+    <div class="container w-50 p-3 mx-auto">
+
+        <h1>
+            {{ srvModele.modele.nom }}
+        </h1>
+        <table cellpadding=20>
+            <td >
+                <!-- <div>
+                    {{ srvModele.modele.note }}
+                </div> -->
+            </td>
+            <td>
+                <div>
+                      {{ srvModele.modele.tempsrealisation }}   
+                </div>
+            </td>
+            <td>
+                <div>
+                     {{ srvModele.modele.niveau }}  
+                </div>
+            </td>
+            <td>
+                <div>
+                      {{ srvModele.nombreEtapes() }}  
+                </div>
+            </td>
+            <td>
+                <div>
+                      {{ srvModele.modele.qteBoisNecessaire }} 
+                </div>
+            </td>
+        </table>
+        <!-- <div *ngIf="srvModele.modele.image != null || srvModele.modele.image == ''">
+        </div> -->
+        <div>
+            {{ srvModele.modele.description }}
+        </div>
+        <!-- <button class="btn btn-success" onclick="@{etape}">Commencer</button> -->
+
+
+
+
+    </div>
+</html>

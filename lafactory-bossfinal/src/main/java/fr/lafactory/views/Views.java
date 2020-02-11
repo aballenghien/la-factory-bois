@@ -12,6 +12,9 @@ public class Views {
 	public static class ModeleWithEtapes extends Modele {
 		
 	}
+	public static class ModeleWithAppreciation extends Modele {
+		
+	}
 	public static class ModeleWithEtapesAndCategories extends Modele {
 		
 	}
