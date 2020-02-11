@@ -13,18 +13,17 @@ export class AppComponent {
   title = 'lafactory-angular';
 
   constructor (private router: Router, private srvCategorie: CategorieService) {
-    this.categories = this.srvCategorie.findCategoriesNiv1();
+    this.srvCategorie.findCategoriesNiv1();
   }
 
-  private categorie: Categorie;
+  private categorie: Categorie = new Categorie(1);
   private categories: Array<Categorie>;
 
-  public niveau: string;
+  public niveau: string = "Difficulté";
+  public niveaux = Object.values(Niveau);
 
   private afficherModeles() {
-    alert(this.categories.length);
-    if (!this.niveau) {
-      alert("ici");
+    if (this.niveau === "Difficulté") {
       this.router.navigate(['/modele' , this.categorie.id]);
     }
     else {
