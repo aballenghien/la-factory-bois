@@ -34,7 +34,6 @@ export class ModeleComponent implements OnInit {
   
       if (this.niveau == null){
         this.http.get<Array<Modele>>(this.service.url + 'modele/categorie/' + this.categorieId).subscribe(resp => this.modeles=resp);
-        alert("ok");
       }
   
       
