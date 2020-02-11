@@ -1,18 +1,33 @@
 <html >
 
-  <h1>{{modeleService.modele.nom}}mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</h1>
-<div *ngFor="let etape of modeleService.modele.etapes" ></div>
+  <h1>{{modeleService.modele?.nom}}</h1>
+<!-- <div *ngFor="let etape of modeleService.modele.etapes" ></div>
 <div >
-  
+</div> -->
 
 
-</div>
+<table>
+<tr *ngFor="let etape of modeleService.modele?.etapes">
+  <div class="media">
+      <img class="mr-3 image1" src="{{etape.image}}" >
+      
+      <div class="media-body">
+        
+        <div style="height: 10vh;" class="row align-items-center">
+          <div class = "col"> <h5 class="mt-0">{{etape.titre}}</h5> </div>
+          
+        </div> 
+        <div style="width:1000px">{{etape.texte}}</div>
+          
+    
+        
+      </div>
+       
+    </div>
 
+</tr>
 
-
-
-
-
+</table>
 
     <!-- <div id="demo" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

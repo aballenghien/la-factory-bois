@@ -11,7 +11,7 @@ import { EtapeComponent } from './etape/etape.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'idees', component: IdeesComponent },
+  // { path: 'idees', component: IdeesComponent },
   { path: 'modele/:id', component: HomeComponent },
   { path: 'modele/:id/:niveau', component: HomeComponent },
   { path : 'etape/:id', component: EtapeComponent},

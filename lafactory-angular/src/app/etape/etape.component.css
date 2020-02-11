@@ -26,3 +26,14 @@ a[name="next"]{
     position: relative;
     left: 650px;
 }
+
+.image1 {
+    width: 250px; 
+    height: 250px; 
+    object-fit: cover; 
+}
+
+html{
+    position: relative;
+    left: 250px;
+}
