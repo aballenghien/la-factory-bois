@@ -9,7 +9,7 @@ import { Modele } from '../model/modele';
 export class ModeleService {
 
   public modeles: Array<Modele> = [];
-  public modele: Modele = new Modele();
+  public modele: Modele;
 
   constructor(private srv: AppConfigService, private http: HttpClient) { }
 
@@ -40,7 +40,24 @@ export class ModeleService {
   public findById(id: number): Modele {
     this.http
       .get<Modele>(this.srv.url+'modele/'+id)
-      .subscribe(resp => this.modele = resp);
+      .subscribe(resp => this.modele=resp);
+    return this.modele;
+  }
+  public findByIdWithAppreciation(id: number): Modele {
+    this.http
+      .get<Modele>(this.srv.url+'modele/appreciation/'+id)
+      .subscribe(resp => {
+        
+        this.modele = resp
+        let noteMoy = 0;
+        let nbNote = 0;
+        for ( let a of this.modele.appreciations) {
+          noteMoy += a.note;
+          nbNote++;
+        }
+        this.modele.noteMoy=noteMoy/nbNote;
+
+      });
     return this.modele;
   }
 

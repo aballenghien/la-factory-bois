@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.lafactory.dao.IDAOModele;
+import fr.lafactory.model.Appreciation;
 import fr.lafactory.model.Modele;
 import fr.lafactory.model.Niveau;
 import fr.lafactory.views.Views;
@@ -29,6 +30,23 @@ public class ModeleRestController {
 	@JsonView(Views.ModeleWithEtapes.class)
 	public Modele getModeleById(@PathVariable int id) {
 		return daoModele.findByIdWithEtapes(id);
+	}
+	
+	@GetMapping("appreciation/{id}")
+	@JsonView(Views.ModeleWithAppreciation.class)
+	public Modele getModeleByIdAppreciation(@PathVariable int id) {
+
+
+		Modele modele = daoModele.modeleWithNote(id);
+		int noteMoy = 0;
+		int nbNote = 0;
+		for (Appreciation a : modele.getAppreciations()) {
+			noteMoy += a.getNote();
+			nbNote++;
+		}
+		modele.setNoteMoy(noteMoy/nbNote);
+		return modele;
+
 	}
 	
 	//FindByCategorie

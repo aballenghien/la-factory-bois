@@ -100,6 +100,18 @@ public class Modele {
 		
 	}
 
+	public List<Appreciation> getAppreciations() {
+		return appreciations;
+	}
+
+	public void setAppreciations(List<Appreciation> appreciations) {
+		this.appreciations = appreciations;
+	}
+
+	public void setNoteMoy(double noteMoy) {
+		this.noteMoy = noteMoy;
+	}
+
 	public int getId() {
 		return id;
 	}

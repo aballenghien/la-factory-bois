@@ -2,3 +2,8 @@ insert into personne (per_type,per_id,per_nom,per_prenom,per_role,uti_username) 
 insert into personne (per_type,per_id,per_nom,per_prenom,per_role,uti_username) values ('visiteur',1,'simon','marcellin','VISITEUR','maxou');
 insert into idee (ide_id,ide_description,ide_visiteur_id) values (1,'partir en week-end',1);
 insert into idee (ide_id,ide_description,ide_visiteur_id) values (0,'aller manger',1);
+insert into appreciation (app_id,app_note,app_mod_id) values (1,4,1);
+insert into appreciation (app_id,app_note,app_mod_id) values (2,3,1);
+insert into appreciation (app_id,app_note,app_mod_id) values (3,4,1);
+insert into appreciation (app_id,app_note,app_mod_id) values (4,5,1);
+insert into appreciation (app_id,app_note,app_mod_id) values (5,0,1);

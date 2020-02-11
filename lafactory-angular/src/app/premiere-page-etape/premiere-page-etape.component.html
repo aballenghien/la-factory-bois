@@ -1,41 +1,54 @@
 <html>
     <div class="container w-50 p-3 mx-auto">
-
-        <h1>
+        <h1 style="text-align: center;">
             {{ srvModele.modele.nom }}
         </h1>
-        <table cellpadding=20>
+        <br>
+        <table class="postab table-dark" cellpadding=30 position="relative" left="100px">
+            <thead class="thead-dark">
             <td >
-                <!-- <div>
-                    {{ srvModele.modele.note }}
-                </div> -->
-            </td>
-            <td>
-                <div>
-                      {{ srvModele.modele.tempsrealisation }}   
+                <div style="width:160px">
+                    Note : {{ srvModele.modele.noteMoy }}/5
                 </div>
             </td>
             <td>
-                <div>
-                     {{ srvModele.modele.niveau }}  
+                <div style="width:180px">
+                      Durée : {{ srvModele.modele.tempsRealisation }} h
                 </div>
             </td>
             <td>
-                <div>
-                      {{ srvModele.nombreEtapes() }}  
+                <div style="width:260px">
+                    Niveau : {{ srvModele.modele.niveau }}  
                 </div>
             </td>
+            <!-- <td>
+                <div style="width:190px">
+                    Nombre d'étapes : {{ srvModele.nombreEtapes() }}  
+                </div>
+            </td> -->
             <td>
-                <div>
-                      {{ srvModele.modele.qteBoisNecessaire }} 
+                <div style="width:280px">
+                      Qté bois nécessaire : {{ srvModele.modele.qteBoisNecessaire }} 
                 </div>
             </td>
+        </thead>
         </table>
+        <br>
+        <br>
+        <img class="mr-3 image1" src="{{srvModele.modele.imageFinale}}" />
+        <br>
+        <br>
         <!-- <div *ngIf="srvModele.modele.image != null || srvModele.modele.image == ''">
         </div> -->
-        <div>
+        <h4 line-height=100 style="text-align: center;">
             {{ srvModele.modele.description }}
-        </div>
+        </h4>
+
+        <br>
+        <br>
+
+        <button button (click)="allerEtape(modeleService.modele)" type="button" class="btn btn-success monBouton btn-lg btn-block">Commencer le modèle</button>
+
         <!-- <button class="btn btn-success" onclick="@{etape}">Commencer</button> -->
 
 
