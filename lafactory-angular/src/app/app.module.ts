@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { IdeesComponent } from './idees/idees.component';
-import { PremierePageEtapeComponent } from './premiere-page-etape/premiere-page-etape.component';
+import { ModeleComponent } from './modele/modele.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
+    IdeesComponent,
+    ModeleComponent
     IdeesComponent,
     PremierePageEtapeComponent
   ],
