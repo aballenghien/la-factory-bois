@@ -1,5 +1,12 @@
 <html>
+    <div class="container ml-2 navCat">
+        
+        <nav *ngFor="let categorie of sousCategories">
+            <li><a [routerLink]="['/modeles',categorie.id]">{{ categorie.nom }}</a></li>
+        </nav>
+    </div>
 <h1> Résultat de votre recherche</h1>
+
     <table>
    
  

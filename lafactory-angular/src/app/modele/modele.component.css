@@ -8,3 +8,23 @@ html {
     height: 250px; 
     object-fit: cover; 
 }
+
+.navCat {
+    position: relative;
+    left: -220px;
+    z-index: 2;
+    list-style-type: none;
+    width: 200px;
+    
+}
+
+li a{
+    display: block;
+    padding: 10px 50px;
+    text-decoration: none;
+    color: #000;
+}
+li a:hover {
+    background-color: rgb(75, 54, 31);
+    color: white;
+}

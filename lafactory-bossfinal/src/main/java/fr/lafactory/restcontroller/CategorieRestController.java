@@ -37,5 +37,11 @@ public class CategorieRestController {
 		
 	}
 	
+	@GetMapping("/categorie/{id}")
+	@JsonView(Views.Categorie.class)
+	public Categorie findByCategorie (@PathVariable int id) {
+		return daoCategorie.findById(id).orElse(null);
+	}
+	
 
 }
