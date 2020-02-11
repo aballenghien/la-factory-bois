@@ -1,4 +1,4 @@
-<html>
+<html class="background">
     <h1 class="text-center">LA Factory</h1>
 
     <div class="text-center">
@@ -6,7 +6,7 @@
             width="500" height="70"/>
     </div>
 
-    <div class="navigation-container col-2">
+    <div class="navigation-container">
         <nav>
             <li><a [routerLink]="['/home']">Catégories</a></li>
             <li><a [routerLink]="['/idees']">Boite à Idées</a></li>
@@ -14,24 +14,27 @@
     </div>
 
     <form>
-        <div class="form-row col-7 align-items-center">
+        <div class="form-row align-items-center">
            <select class="form-control col-sm-3">
-               <option selected>Catégories</option>
-                <option *ngFor="let categorie of categories">{{categorie.nom}}</option>
+               <option value='1' [(ngModel)]="categorie.id" selected>Catégories</option>
+                <option *ngFor="let categorie of srvCategorie.categories" value="categorie.id" [(ngModel)]="categorie.id">{{categorie.nom}}</option>
            </select>
 
-           <select class="form-control col-sm-3">
+           <select class="form-control col-sm-3" [(ngModel)]="niveau">
                 <option selected>Difficulté</option>
                <option>OCCASIONNEL</option>
                <option>NORMAL</option>
                <option>AVANCE</option>
-               <option>EXERT</option>
+               <option>EXPERT</option>
            </select>
 
            <input class="form-control col-sm-3" type="text" placeholder="Recherche"/>
 
-           <button (click)="afficherTuto()" class="btn btn-dark col-sm-1">OK</button>
+           
+
+           <button (click)="afficherModeles()" class="btn btn-dark col-sm-1">OK</button>
         </div>
     </form>
+
     <router-outlet></router-outlet>
 </html>

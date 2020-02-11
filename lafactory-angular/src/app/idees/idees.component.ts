@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { Idee } from '../model/idee';
 import { IdeeService } from '../service/idee.service';
 import { Visiteur } from '../model/visiteur';
@@ -27,3 +27,4 @@ export class IdeesComponent implements OnInit {
   }
 
 }
+*/

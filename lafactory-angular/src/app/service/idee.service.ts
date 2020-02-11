@@ -1,4 +1,4 @@
-import { Idee } from '../model/idee';
+/*import { Idee } from '../model/idee';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from './app-config.service';
@@ -19,4 +19,4 @@ export class IdeeService {
         .post<Idee>(`${ this.srvAppConfig.url + 'idee' }`, idee)
         .subscribe(resp => this.idees.push(resp));
   }
-}
+}*/

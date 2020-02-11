@@ -9,20 +9,21 @@ import { Modele } from '../model/Modele'
   providedIn: 'root'
 })
 export class EtapeService {
-  public etapes:Array<Etape> =null;
+  public etapes:Array<Etape> =[];
+  private modele:Modele;
 
   constructor(private http: HttpClient, private srvAppConfig: AppConfigService) { }
 
-  
-if(Modele.id != 0){
-  this.http.get<Array<Etape>>(`${this.srvAppConfig.url}etape`).subscribe(resp => this.etapes = resp );
-}
+
+  public findByModele(): Array<Etape> {
+    this.http
+      .get<Array<Modele>>(this.srvAppConfig.url + 'etape')
+      .subscribe(resp =>
+        this.etapes = resp);
+        return this.etapes;
+  }
 
 
-public findAll() : Array<Etape>{
-  this.http.get<Array<Etape>>(`${this.srvAppConfig.url}etape`).subscribe(resp => this.etapes = resp );
-  return this.etapes;
-}
 
 
 

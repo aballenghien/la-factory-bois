@@ -36,4 +36,13 @@ export class ModeleService {
         this.modeles = resp);
         return this.modeles;
   }
+
+  public findById(id: number): Modele {
+    this.http
+      .get<Modele>(this.srv.url+'modele/'+id)
+      .subscribe(resp => this.modele = resp);
+    return this.modele;
+  }
+
+
 }
