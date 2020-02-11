@@ -36,7 +36,7 @@ public class Categorie {
 	
 	@Column(name="CAT_NOM", nullable = false, length = 100)
 	@NotEmpty
-	@JsonView(Views.ModeleWithCategories.class)
+	@JsonView({Views.Categorie.class, Views.ModeleWithCategories.class})
 	private String nom;
 	@ManyToOne
 	@JoinColumn(name = "CATMERE_ID")

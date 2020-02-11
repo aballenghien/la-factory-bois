@@ -24,10 +24,10 @@ export class AppComponent {
 
   private afficherModeles() {
     if (this.niveau === "Difficulté") {
-      this.router.navigate(['/modele' , this.categorie.id]);
+      this.router.navigate(['/modeles' , this.categorie.id]);
     }
     else {
-      this.router.navigate(['/modele', this.categorie.id, this.niveau]);
+      this.router.navigate(['/modeles', this.categorie.id, this.niveau]);
     }
   }
 }

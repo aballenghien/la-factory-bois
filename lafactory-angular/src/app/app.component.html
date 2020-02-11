@@ -18,7 +18,7 @@
         <div class="form-row align-items-center">
            <select class="form-control col-sm-3" [(ngModel)]="categorie.id" [ngModelOptions]="{standalone: true}">
                <option value='1' selected>Catégories</option>
-                <option *ngFor="let categorie of srvCategorie.categories" [value]="categorie.id">{{categorie.nom}}</option>
+                <option *ngFor="let categorie of srvCategorie.categories" [value]="categorie.id" [text]="categorie.nom"></option>
            </select>
 
            <select class="form-control col-sm-3" [(ngModel)]="niveau" [ngModelOptions]="{standalone: true}">
