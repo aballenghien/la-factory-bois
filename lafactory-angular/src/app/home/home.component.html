@@ -1,4 +1,9 @@
 <html>
-    <h1></h1>
+    <div class="container ml-2 navCat">
+        <h5>{{catMere.nom}}</h5>
+        <nav *ngFor="let categorie of sousCategories">
+            <li><a [routerLink]="['/categorie',categorie.id]" [[${ categorie.nom }]]></a></li>
+        </nav>
+    </div>
 </html>
 

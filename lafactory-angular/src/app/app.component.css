@@ -13,6 +13,7 @@ html {
     top: 0;
     bottom: 0;
     background-color: burlywood;
+    z-index: 0;
 }
 
 nav {

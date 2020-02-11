@@ -1,10 +1,10 @@
-import { Utilisateur } from './utilisateur';
+import { Visiteur } from './visiteur';
 
 export class Idee {
     constructor(
         public id?: number,
         public description?: string,
         public archive?: boolean,
-        public utilisateur?: Utilisateur
+        public visiteur?: Visiteur
     ) {}
 }
