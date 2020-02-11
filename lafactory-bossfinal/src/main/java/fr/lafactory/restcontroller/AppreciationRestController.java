@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.lafactory.dao.IDAOAppreciation;
 
 @RestController
-@RequestMapping("/api/produit")
+@RequestMapping("/api/appreciation")
 @CrossOrigin("*")
 public class AppreciationRestController {
 
