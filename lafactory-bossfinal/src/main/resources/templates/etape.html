@@ -15,16 +15,20 @@
 		<thead class="thead-dark">
 			<tr>
 				<th>Ordre</th>
+				<th>Modele</th>
 				<th>Titre</th>
 				<th>Texte</th>
 				<th>Image</th>
+				
 				<th></th>
 			</thead>
 			<tr th:each="etape : ${ etapes }">
 				<td th:text="${ etape.ordre }"></td>
+				<td th:text="${ etape.modele.nom }"></td>
 				<td th:text="${ etape.titre }"></td>
 				<td th:text="${ etape.texte }"></td>
 				<td><img th:if="${etape.image!=''}" th:src="${etape?.image}" width="100px"></td>
+				
 				<td><a class="btn btn-warning" th:href="@{ modifierEtape(id=${ etape.id })}">Editer</a>
 				<a class="btn btn-danger" th:href="@{ supprimerEtape(id=${ etape.id })}">Supprimer</a></td>
 			</tr>

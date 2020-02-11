@@ -11,6 +11,7 @@ import { IdeesComponent } from './idees/idees.component';
 import { ModeleComponent } from './modele/modele.component';
 import { PremierePageEtapeComponent } from './premiere-page-etape/premiere-page-etape.component';
 import { DernierePageEtapeComponent } from './derniere-page-etape/derniere-page-etape.component';
+import { EtapeComponent } from './etape/etape.component';
 
 import { SERVICE_SESSION_STORAGE, StorageSessionServiceService } from './service/storage-session-service.service';
  
@@ -22,7 +23,10 @@ const routes: Routes = [
   { path: 'modeles/:id/:niveau', component: ModeleComponent },
   { path: 'modeles/:id', component: ModeleComponent },
   { path: 'premiere-page-etape', component: PremierePageEtapeComponent },
+  { path: 'modele/:id', component : PremierePageEtapeComponent },
+  { path : 'etape/:id', component: EtapeComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
+  
 ];
 
 @NgModule({
@@ -33,6 +37,7 @@ const routes: Routes = [
     PremierePageEtapeComponent,
     DernierePageEtapeComponent,
     IdeesComponent,
+    EtapeComponent
   ],
   imports: [
     BrowserModule,
