@@ -12,6 +12,8 @@ import { PremierePageEtapeComponent } from './premiere-page-etape/premiere-page-
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'idees', component: IdeesComponent },
+  { path: 'modele/:id', component: HomeComponent },
+  { path: 'modele/:id/:niveau', component: HomeComponent },
   { path: 'premiere-page-etape', component: PremierePageEtapeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

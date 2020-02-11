@@ -15,24 +15,24 @@
     </div>
 
     <form>
-        <div class="form-row col-7 align-items-center">
-           <select class="form-control col-sm-3">
-               <option selected>Catégories</option>
-                <option *ngFor="let categorie of categories">{{categorie.nom}}</option>
+        <div class="form-row align-items-center">
+           <select class="form-control col-sm-3" [(ngModel)]="categorie.id" [ngModelOptions]="{standalone: true}">
+               <option value='1' selected>Catégories</option>
+                <option *ngFor="let categorie of srvCategorie.categories" [value]="categorie.id">{{categorie.nom}}</option>
            </select>
 
-           <select class="form-control col-sm-3">
-                <option selected>Difficulté</option>
-               <option>OCCASIONNEL</option>
-               <option>NORMAL</option>
-               <option>AVANCE</option>
-               <option>EXERT</option>
+           <select class="form-control col-sm-3" [(ngModel)]="niveau" [ngModelOptions]="{standalone: true}">
+                <option>Difficulté</option>
+               <option *ngFor="let niveau of niveaux">{{niveau}}</option>
            </select>
 
            <input class="form-control col-sm-3" type="text" placeholder="Recherche"/>
 
-           <button (click)="afficherTuto()" class="btn btn-dark col-sm-1">OK</button>
+           
+
+           <button (click)="afficherModeles()" class="btn btn-dark col-sm-1">OK</button>
         </div>
     </form>
+
     <router-outlet></router-outlet>
 </html>
