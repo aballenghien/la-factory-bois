@@ -1,3 +1,11 @@
+html {
+    background-color: #F5E9B9;
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+}
 
 .navigation-container {
     position: absolute;
@@ -26,7 +34,6 @@ li a:hover {
 }
 
 form {
-    position: relative;
-    top: 10px;
-    left: 800px;
+    margin-top: 10px;
+    margin-left: 800px;
 }
